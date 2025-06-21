@@ -1,9 +1,11 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router";
 import Lottie from "lottie-react";
 import registerLottie from "../../assets/image/register.json";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Register = () => {
+    const {createUser}=use(AuthContext)
     const handleRegister = e =>{
         e.preventDefault();
         const form = e.target;
@@ -12,6 +14,17 @@ const Register = () => {
         const photo = form.photo.value;
         const password = form.password.value;
         console.log(name,email,photo,password);
+
+
+
+        //Create User
+       createUser(email,password)
+       .then(result=>{
+        console.log(result);
+       })
+       .catch(err=>{
+        console.log(err);
+       })
     }
   return (
     <div className="min-h-screen  flex flex-col md:flex-row items-center justify-center gap-8 py-8 bg-gray-100 dark:bg-gray-900 px-4">
