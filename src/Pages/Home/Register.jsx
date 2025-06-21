@@ -5,7 +5,7 @@ import registerLottie from "../../assets/image/register.json";
 import { AuthContext } from "../../Context/AuthContext";
 
 const Register = () => {
-  const { createUser } = use(AuthContext);
+  const { createUser, googleLogin } = use(AuthContext);
   const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
@@ -24,6 +24,17 @@ const Register = () => {
       })
       .catch((err) => {
         console.log(err);
+      });
+  };
+  //Google register
+  const handleGoogleRegister = () => {
+    googleLogin()
+      .then((result) => {
+        console.log("Google Login Successful:", result.user);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log("Google Login Error:", err);
       });
   };
   return (
@@ -76,7 +87,10 @@ const Register = () => {
 
           <div className="divider">OR</div>
 
-          <button className="btn bg-white text-black border-[#e5e5e5] w-full mb-3">
+          <button
+            onClick={handleGoogleRegister}
+            className="btn bg-white text-black border-[#e5e5e5] w-full mb-3"
+          >
             <svg
               aria-label="Google logo"
               width="16"

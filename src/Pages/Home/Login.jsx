@@ -5,7 +5,7 @@ import loginLottie from "../../assets/image/login.json";
 import { AuthContext } from "../../Context/AuthContext";
 
 const Login = () => {
-  const { logInUser } = use(AuthContext);
+  const { logInUser,googleLogin } = use(AuthContext);
   const navigate = useNavigate();
 
   const handleLogIn = (e) => {
@@ -23,6 +23,17 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err);
+      });
+  };
+   //Google register
+  const handleGoogleRegister = () => {
+    googleLogin()
+      .then((result) => {
+        console.log("Google Login Successful:", result.user);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log("Google Login Error:", err);
       });
   };
 
@@ -60,7 +71,7 @@ const Login = () => {
 
           <div className="divider">OR</div>
 
-          <button className="btn bg-white text-black border-[#e5e5e5] w-full mb-3">
+          <button onClick={handleGoogleRegister} className="btn bg-white text-black border-[#e5e5e5] w-full mb-3">
             <svg
               aria-label="Google logo"
               width="16"
