@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React, { use, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import Lottie from "lottie-react";
 import registerLottie from "../../assets/image/register.json";
@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser, googleLogin } = use(AuthContext);
+  const [showPasswordRules, setShowPasswordRules] = useState(false);
   const navigate = useNavigate();
   const handleRegister = (e) => {
     e.preventDefault();
@@ -17,17 +18,33 @@ const Register = () => {
     const password = form.password.value;
     console.log(name, email, photo, password);
 
+    // Password Validation
+    const errors = [];
+    if (password.length < 6) errors.push("at least 6 characters");
+    if (!/[A-Z]/.test(password)) errors.push("an uppercase letter");
+    if (!/[a-z]/.test(password)) errors.push("a lowercase letter");
+    if (!/\d/.test(password)) errors.push("a number");
+
+    if (errors.length > 0) {
+      Swal.fire({
+        icon: "error",
+        title: "Invalid Password",
+        text: "Password must contain: " + errors.join(", "),
+      });
+      return;
+    }
+
     //Create User
     createUser(email, password)
       .then((result) => {
         console.log(result);
-         Swal.fire({
-                  position: "center",
-                  icon: "success",
-                  title: "Register Successfully",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Register Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/");
       })
       .catch((err) => {
@@ -39,13 +56,13 @@ const Register = () => {
     googleLogin()
       .then((result) => {
         console.log("Google Login Successful:", result.user);
-         Swal.fire({
-                  position: "center",
-                  icon: "success",
-                  title: "Google register Successfully",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Google register Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/");
       })
       .catch((err) => {
@@ -93,8 +110,18 @@ const Register = () => {
             type="password"
             name="password"
             placeholder="Password"
-            className="input input-bordered w-full mb-4"
+            className="input input-bordered w-full mb-1"
+            onFocus={() => setShowPasswordRules(true)}
+            onBlur={() => setShowPasswordRules(false)}
           />
+          {showPasswordRules && (
+            <div className="text-sm text-red-400 mb-3">
+              <p>Length must be at least 6 characters</p>
+              <p>At least one number</p>
+              <p>At least one lowercase letter</p>
+              <p>At least one uppercase letter</p>
+            </div>
+          )}
 
           <button type="submit" className="btn btn-primary w-full">
             Register

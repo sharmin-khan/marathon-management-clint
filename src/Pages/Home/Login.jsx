@@ -21,7 +21,7 @@ const Login = () => {
       .then((result) => {
         console.log(result);
         Swal.fire({
-          position: "top-end",
+          position: "center",
           icon: "success",
           title: "Login Successfully",
           showConfirmButton: false,
@@ -31,6 +31,11 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err);
+          Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          text: "Please try again later.",
+        });
       });
   };
   //Google register
@@ -49,6 +54,11 @@ const Login = () => {
       })
       .catch((err) => {
         console.log("Google Login Error:", err);
+          Swal.fire({
+          icon: "error",
+          title: "Google Login Failed",
+          text: "Please try again later.",
+        });
       });
   };
 
