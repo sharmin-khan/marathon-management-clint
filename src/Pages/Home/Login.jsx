@@ -3,9 +3,10 @@ import { Link, useNavigate } from "react-router";
 import Lottie from "lottie-react";
 import loginLottie from "../../assets/image/login.json";
 import { AuthContext } from "../../Context/AuthContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { logInUser,googleLogin } = use(AuthContext);
+  const { logInUser, googleLogin } = use(AuthContext);
   const navigate = useNavigate();
 
   const handleLogIn = (e) => {
@@ -19,17 +20,31 @@ const Login = () => {
     logInUser(email, password)
       .then((result) => {
         console.log(result);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Login Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/");
       })
       .catch((err) => {
         console.log(err);
       });
   };
-   //Google register
+  //Google register
   const handleGoogleRegister = () => {
     googleLogin()
       .then((result) => {
         console.log("Google Login Successful:", result.user);
+         Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Google Login Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/");
       })
       .catch((err) => {
@@ -71,7 +86,10 @@ const Login = () => {
 
           <div className="divider">OR</div>
 
-          <button onClick={handleGoogleRegister} className="btn bg-white text-black border-[#e5e5e5] w-full mb-3">
+          <button
+            onClick={handleGoogleRegister}
+            className="btn bg-white text-black border-[#e5e5e5] w-full mb-3"
+          >
             <svg
               aria-label="Google logo"
               width="16"

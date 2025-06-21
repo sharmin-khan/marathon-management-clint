@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router";
 import Lottie from "lottie-react";
 import registerLottie from "../../assets/image/register.json";
 import { AuthContext } from "../../Context/AuthContext";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { createUser, googleLogin } = use(AuthContext);
@@ -20,6 +21,13 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         console.log(result);
+         Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Register Successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
         navigate("/");
       })
       .catch((err) => {
@@ -31,6 +39,13 @@ const Register = () => {
     googleLogin()
       .then((result) => {
         console.log("Google Login Successful:", result.user);
+         Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Google register Successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
         navigate("/");
       })
       .catch((err) => {

@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { FaUserCircle } from "react-icons/fa";
 import logo3 from "../assets/image/logo3.jpg";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, logoutUser } = useContext(AuthContext);
@@ -12,6 +13,13 @@ const Navbar = () => {
     logoutUser()
       .then(() => {
         console.log("signed out user");
+         Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Logout Successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
         navigate("/");
       })
       .catch((err) => {
