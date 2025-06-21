@@ -34,7 +34,7 @@ const Footer = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) =>
-                  `text-md font-semibold px-3 py-1 rounded hover:bg-gray-200 ${
+                  `text-md font-semibold  py-1 rounded hover:bg-gray-200 ${
                     isActive ? "text-blue-600" : "text-gray-700"
                   }`
                 }
@@ -46,7 +46,7 @@ const Footer = () => {
               <NavLink
                 to="/marathons"
                 className={({ isActive }) =>
-                  `text-md font-semibold px-3 py-1 rounded hover:bg-gray-200 ${
+                  `text-md font-semibold  py-1 rounded hover:bg-gray-200 ${
                     isActive ? "text-blue-600" : "text-gray-700"
                   }`
                 }
@@ -60,7 +60,7 @@ const Footer = () => {
                   <NavLink
                     to="/dashboard"
                     className={({ isActive }) =>
-                      `text-md font-semibold px-3 py-1 rounded hover:bg-gray-200 ${
+                      `text-md font-semibold py-1 rounded hover:bg-gray-200 ${
                         isActive ? "text-blue-600" : "text-gray-700"
                       }`
                     }
@@ -74,7 +74,7 @@ const Footer = () => {
                 <li>
                   <NavLink
                     to="/register"
-                    className="text-md font-semibold px-3 py-1  rounded hover:bg-blue-700"
+                    className="text-md font-semibold py-1  rounded hover:bg-blue-700"
                   >
                     Register
                   </NavLink>
