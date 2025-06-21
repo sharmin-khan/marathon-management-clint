@@ -1,14 +1,39 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { use } from "react";
+import { Link, useNavigate } from "react-router";
 import Lottie from "lottie-react";
 import loginLottie from "../../assets/image/login.json";
+import { AuthContext } from "../../Context/AuthContext";
 
 const Login = () => {
+  const { logInUser } = use(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogIn = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    //Login User
+    logInUser(email, password)
+      .then((result) => {
+        console.log(result);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center bg-gray-100 dark:bg-gray-900 px-4">
+    <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center py-8 bg-gray-100 dark:bg-gray-900 px-4">
       {/* Left: Login Form */}
       <div className="w-full lg:w-1/2 flex justify-center">
-        <form className="bg-white dark:bg-gray-800 p-6 rounded shadow-md w-full max-w-md">
+        <form
+          onSubmit={handleLogIn}
+          className="bg-white dark:bg-gray-800 p-6 rounded shadow-md w-full max-w-md"
+        >
           <h2 className="text-2xl font-bold mb-4 text-center text-blue-600">
             Login Now
           </h2>
@@ -16,6 +41,7 @@ const Login = () => {
           <label className="label">Email</label>
           <input
             type="email"
+            name="email"
             placeholder="Email"
             className="input input-bordered w-full mb-4"
           />
@@ -23,6 +49,7 @@ const Login = () => {
           <label className="label">Password</label>
           <input
             type="password"
+            name="password"
             placeholder="Password"
             className="input input-bordered w-full mb-4"
           />

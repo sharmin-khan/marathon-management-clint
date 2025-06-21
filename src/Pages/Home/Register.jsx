@@ -1,36 +1,39 @@
 import React, { use } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Lottie from "lottie-react";
 import registerLottie from "../../assets/image/register.json";
 import { AuthContext } from "../../Context/AuthContext";
 
 const Register = () => {
-    const {createUser}=use(AuthContext)
-    const handleRegister = e =>{
-        e.preventDefault();
-        const form = e.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const photo = form.photo.value;
-        const password = form.password.value;
-        console.log(name,email,photo,password);
+  const { createUser } = use(AuthContext);
+  const navigate = useNavigate();
+  const handleRegister = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const photo = form.photo.value;
+    const password = form.password.value;
+    console.log(name, email, photo, password);
 
-
-
-        //Create User
-       createUser(email,password)
-       .then(result=>{
+    //Create User
+    createUser(email, password)
+      .then((result) => {
         console.log(result);
-       })
-       .catch(err=>{
+        navigate("/");
+      })
+      .catch((err) => {
         console.log(err);
-       })
-    }
+      });
+  };
   return (
     <div className="min-h-screen  flex flex-col md:flex-row items-center justify-center gap-8 py-8 bg-gray-100 dark:bg-gray-900 px-4">
       {/* Left: Register Form */}
       <div className="lg:ml-32">
-        <form onSubmit={handleRegister} className="bg-white dark:bg-gray-800 p-6 rounded shadow-md w-full max-w-md">
+        <form
+          onSubmit={handleRegister}
+          className="bg-white dark:bg-gray-800 p-6 rounded shadow-md w-full max-w-md"
+        >
           <h2 className="text-2xl font-bold mb-4 text-center text-blue-600">
             Register Now
           </h2>
@@ -38,7 +41,7 @@ const Register = () => {
           <label className="label">Name</label>
           <input
             type="text"
-            name='name'
+            name="name"
             placeholder="Name"
             className="input input-bordered w-full mb-4"
           />
@@ -46,7 +49,7 @@ const Register = () => {
           <label className="label">Email</label>
           <input
             type="email"
-            name='email'
+            name="email"
             placeholder="Email"
             className="input input-bordered w-full mb-4"
           />
@@ -62,7 +65,7 @@ const Register = () => {
           <label className="label">Password</label>
           <input
             type="password"
-            name='password'
+            name="password"
             placeholder="Password"
             className="input input-bordered w-full mb-4"
           />

@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router";
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { FaUserCircle } from "react-icons/fa";
@@ -6,6 +6,18 @@ import logo3 from "../assets/image/logo3.jpg";
 
 const Navbar = () => {
   const { user, logoutUser } = useContext(AuthContext);
+  const navigate = useNavigate()
+const handleLogOut = ()=>{
+  logoutUser()
+  .then(()=>{
+    console.log('signed out user');
+    navigate('/')
+  })
+  .catch(err=>{
+    console.log(err);
+  })
+}
+
   const navLinks = (
     <>
       <li>
@@ -47,9 +59,19 @@ const Navbar = () => {
               Dashboard
             </NavLink>
           </li>
+           {/* User avatar */}
+        {user?.photoURL ? (
+          <img
+            src={user.photoURL}
+            alt="user"
+            className="w-12 h-12 rounded-full ml-4 mt-4"
+          />
+        ) : user ? (
+          <FaUserCircle className="text-2xl ml-4 mt-1" />
+        ) : null}
           <li>
             <button
-              onClick={logoutUser}
+              onClick={handleLogOut}
               className="text-lg font-bold px-4 py-1 bg-red-500 text-white rounded hover:bg-red-600"
             >
               Logout
@@ -121,16 +143,7 @@ const Navbar = () => {
           {navLinks}
         </ul>
 
-        {/* User avatar */}
-        {user?.photoURL ? (
-          <img
-            src={user.photoURL}
-            alt="user"
-            className="w-8 h-8 rounded-full ml-4"
-          />
-        ) : user ? (
-          <FaUserCircle className="text-2xl ml-4" />
-        ) : null}
+       
 
         {/* Mobile Dropdown */}
         <div className="dropdown dropdown-end lg:hidden ml-2">
