@@ -1,5 +1,5 @@
 import React from "react";
-import img1 from "../../assets/image/slide3.jpg";
+import img1 from "../../assets/image/img1.jpg";
 import img2 from "../../assets/image/img2.webp";
 import img3 from "../../assets/image/img3.avif";
 

@@ -74,7 +74,7 @@ const Footer = () => {
                 <li>
                   <NavLink
                     to="/register"
-                    className="text-md font-semibold py-1  rounded hover:bg-blue-700"
+                    className="text-md font-semibold py-1  rounded text-gray-700 hover:bg-gray-200"
                   >
                     Register
                   </NavLink>
