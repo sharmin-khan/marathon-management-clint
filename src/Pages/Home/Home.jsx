@@ -8,6 +8,7 @@ import { Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/autoplay";
 import WhyJoinMarathon from "../../Section/WhyJoinMarathon";
+import TopRunners from "../../Section/TopRunners";
 
 const Home = () => {
   return (
@@ -94,6 +95,7 @@ const Home = () => {
           </div>
         </SwiperSlide>
       </Swiper>
+      <TopRunners></TopRunners>
        <WhyJoinMarathon></WhyJoinMarathon>
     </div>
   );

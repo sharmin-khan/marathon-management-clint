@@ -4,3 +4,20 @@
 }
 
 @custom-variant dark (&:where([data-theme=night], [data-theme=night] *));
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
+.gradient-border-l {
+  border-left: 4px solid;
+  border-image: linear-gradient(to bottom, #3b82f6, #fbbf24) 1;
+}

@@ -11,9 +11,9 @@ const WhyJoinMarathon = () => {
         achievement, and community. Here’s why you should join:
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {/* Benefit 1 */}
-        <div className="border-t-4 border-blue-500 bg-white dark:bg-gray-800 p-6 rounded shadow text-center">
+        <div className="border-t-4 border-blue-500 bg-white dark:bg-gray-800 p-6 rounded-lg shadow text-center">
           <FaRunning className="text-4xl text-blue-500 mx-auto mb-4" />
           <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
             Improve Fitness
@@ -24,7 +24,7 @@ const WhyJoinMarathon = () => {
         </div>
 
         {/* Benefit 2 */}
-        <div className="border-t-4 border-blue-500 bg-white dark:bg-gray-800 p-6 rounded shadow text-center">
+        <div className="border-t-4 border-blue-500 bg-white dark:bg-gray-800 p-6 rounded-lg shadow text-center">
           <FaHeart className="text-4xl text-red-500 mx-auto mb-4" />
           <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
             Mental Wellness
@@ -35,7 +35,7 @@ const WhyJoinMarathon = () => {
         </div>
 
         {/* Benefit 3 */}
-        <div className=" border-t-4 border-blue-500 bg-white dark:bg-gray-800 p-6 rounded shadow text-center">
+        <div className=" border-t-4 border-blue-500 bg-white dark:bg-gray-800 p-6 rounded-lg shadow text-center">
           <FaMedal className="text-4xl text-yellow-500 mx-auto mb-4" />
           <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
             Earn Medals
@@ -46,7 +46,7 @@ const WhyJoinMarathon = () => {
         </div>
 
         {/* Benefit 4 */}
-        <div className="border-t-4 border-blue-500  bg-white dark:bg-gray-800 p-6 rounded shadow text-center">
+        <div className="border-t-4 border-blue-500  bg-white dark:bg-gray-800 p-6 rounded-lg shadow text-center">
           <FaUsers className="text-4xl text-green-500 mx-auto mb-4" />
           <h3 className="text-xl font-semibold mb-2 text-gray-800 dark:text-gray-200">
             Be Part of a Community
