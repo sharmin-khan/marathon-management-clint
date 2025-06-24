@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import registerLottie from "../../assets/image/register.json";
 import { AuthContext } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { createUser, googleLogin } = use(AuthContext);
@@ -71,6 +72,9 @@ const Register = () => {
   };
   return (
     <div className="min-h-screen  flex flex-col md:flex-row items-center justify-center gap-8 py-8 bg-gray-100 dark:bg-gray-900 px-4">
+      <Helmet>
+        <title>Register | MarathonPro</title>
+      </Helmet>
       {/* Left: Register Form */}
       <div className="lg:ml-32">
         <form

@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import loginLottie from "../../assets/image/login.json";
 import { AuthContext } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { logInUser, googleLogin } = use(AuthContext);
@@ -31,7 +32,7 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err);
-          Swal.fire({
+        Swal.fire({
           icon: "error",
           title: "Login Failed",
           text: "Please try again later.",
@@ -43,7 +44,7 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         console.log("Google Login Successful:", result.user);
-         Swal.fire({
+        Swal.fire({
           position: "center",
           icon: "success",
           title: "Google Login Successfully",
@@ -54,7 +55,7 @@ const Login = () => {
       })
       .catch((err) => {
         console.log("Google Login Error:", err);
-          Swal.fire({
+        Swal.fire({
           icon: "error",
           title: "Google Login Failed",
           text: "Please try again later.",
@@ -64,6 +65,9 @@ const Login = () => {
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row items-center justify-center py-8 bg-gray-100 dark:bg-gray-900 px-4">
+      <Helmet>
+        <title>Login | MarathonPro</title>
+      </Helmet>
       {/* Left: Login Form */}
       <div className="w-full lg:w-1/2 flex justify-center">
         <form

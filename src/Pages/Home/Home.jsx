@@ -9,10 +9,14 @@ import "swiper/css";
 import "swiper/css/autoplay";
 import WhyJoinMarathon from "../../Section/WhyJoinMarathon";
 import TopRunners from "../../Section/TopRunners";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
     <div className="w-full px-4 md:px-6 lg:px-8 my-4">
+       <Helmet>
+        <title>Home | MarathonPro</title>
+      </Helmet>
       <Swiper
         modules={[Autoplay]}
         autoplay={{ delay: 3000, disableOnInteraction: false }}
