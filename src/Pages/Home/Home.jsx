@@ -10,6 +10,7 @@ import "swiper/css/autoplay";
 import WhyJoinMarathon from "../../Section/WhyJoinMarathon";
 import TopRunners from "../../Section/TopRunners";
 import { Helmet } from "react-helmet-async";
+import UpcomingMarathon from "../../Section/UpcomingMarathon";
 
 const Home = () => {
   return (
@@ -99,6 +100,7 @@ const Home = () => {
           </div>
         </SwiperSlide>
       </Swiper>
+      <UpcomingMarathon></UpcomingMarathon>
       <TopRunners></TopRunners>
        <WhyJoinMarathon></WhyJoinMarathon>
     </div>
