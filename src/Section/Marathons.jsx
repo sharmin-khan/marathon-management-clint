@@ -1,0 +1,53 @@
+import React, { useEffect, useState } from "react";
+
+const Marathons = () => {
+  const [marathons, setMarathons] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/marathon")
+      .then((res) => res.json())
+      .then((data) => setMarathons(data));
+  }, []);
+
+  return (
+    <div className="py-10 bg-white dark:bg-gray-900 transition-colors duration-300">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 my-10">
+        Marathon Events
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
+        {marathons.map((event, idx) => (
+          <div
+            key={idx}
+            className="card group w-full sm:w-[22rem] lg:w-[20rem] xl:w-[28rem] bg-base-100 shadow-md dark:bg-gray-800 transition duration-300"
+          >
+            <figure className="overflow-hidden">
+              <img
+                src={event.image}
+                alt={event.title}
+                className="w-full h-48 sm:h-56 md:h-60 lg:h-72 xl:h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+            </figure>
+
+            <div className="card-body">
+              <h2 className="card-title text-blue-600 dark:text-blue-400">
+                {event.title}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300 text-md font-semibold">
+                🌍 {event.location} <br />
+                🗓️ Registration: {event.registrationStart} –{" "}
+                {event.registrationEnd}
+              </p>
+              <div className="card-actions justify-end">
+                <button className="btn btn-md bg-blue-600 text-white hover:bg-yellow-400 border-none dark:bg-blue-500 dark:hover:bg-yellow-400">
+                  See Details
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default Marathons;

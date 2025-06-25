@@ -11,6 +11,7 @@ import WhyJoinMarathon from "../../Section/WhyJoinMarathon";
 import TopRunners from "../../Section/TopRunners";
 import { Helmet } from "react-helmet-async";
 import UpcomingMarathon from "../../Section/UpcomingMarathon";
+import Marathons from "../../Section/Marathons";
 
 const Home = () => {
   return (
@@ -100,6 +101,7 @@ const Home = () => {
           </div>
         </SwiperSlide>
       </Swiper>
+      <Marathons></Marathons>
       <UpcomingMarathon></UpcomingMarathon>
       <TopRunners></TopRunners>
        <WhyJoinMarathon></WhyJoinMarathon>
