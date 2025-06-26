@@ -6,6 +6,8 @@ import Home from "../Pages/Home/Home";
 import Register from "../Pages/Home/Register";
 import Login from "../Pages/Home/Login";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import PrivateRoutes from "../Routes/PrivateRoutes";
+import MarathonDetails from "../Pages/MarathonDetails/MarathonDetails";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +26,11 @@ const router = createBrowserRouter([
     {
         path:'login',
         Component:Login,
-    }
+    },
+   {
+  path: '/marathonDetails/:id',
+  element: <PrivateRoutes><MarathonDetails /></PrivateRoutes>
+}
    ]
   },
 ]);

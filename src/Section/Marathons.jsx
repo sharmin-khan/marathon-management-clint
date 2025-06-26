@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 const Marathons = () => {
   const [marathons, setMarathons] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch("http://localhost:5000/marathon")
@@ -11,9 +13,14 @@ const Marathons = () => {
 
   return (
     <div className="py-10 bg-white dark:bg-gray-900 transition-colors duration-300">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 my-10">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mt-10 mb-6">
         Marathon Events
       </h2>
+      <p className="text-center max-w-2xl mx-auto text-gray-700 dark:text-gray-300 mb-10">
+        Join exciting marathon events happening across the globe. Register now
+        to test your endurance, meet passionate runners, and be a part of
+        something unforgettable!
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
         {marathons.map((event, idx) => (
           <div
@@ -38,8 +45,11 @@ const Marathons = () => {
                 {event.registrationEnd}
               </p>
               <div className="card-actions justify-end">
-                <button className="btn btn-md bg-blue-600 text-white hover:bg-yellow-400 border-none dark:bg-blue-500 dark:hover:bg-yellow-400">
-                  See Details
+                <button
+                  onClick={() => navigate(`/marathonDetails/${event._id}`)}
+                  className="btn btn-md bg-blue-600 hover:bg-yellow-400 dark:bg-blue-400 dark:hover:bg-yellow-400 text-white"
+                >
+                  See Details →
                 </button>
               </div>
             </div>
