@@ -59,7 +59,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/marathons"
+          to="/marathonCard"
           className={({ isActive }) =>
             `text-base lg:text-sm xl:text-lg font-bold px-3 py-1 rounded  hover:bg-gray-200 ${
               isActive

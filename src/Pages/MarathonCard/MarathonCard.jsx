@@ -1,23 +1,25 @@
+
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-const Marathons = () => {
+const MarathonCard = () => {
   const [marathons, setMarathons] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/marathon")
+    fetch("http://localhost:5000/marathonCard")
       .then((res) => res.json())
       .then((data) => setMarathons(data));
   }, []);
 
+
   return (
     <div className="py-10 bg-white dark:bg-gray-900 transition-colors duration-300">
       <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mt-10 mb-6">
-        Marathon Series
+        Marathon series 
       </h2>
       <p className="text-center max-w-2xl mx-auto text-gray-700 dark:text-gray-300 mb-10">
-        Join exciting marathon Series happening across the globe. Register now
+        Join exciting marathon series happening across the globe. Register now
         to test your endurance, meet passionate runners, and be a part of
         something unforgettable!
       </p>
@@ -60,4 +62,4 @@ const Marathons = () => {
   );
 };
 
-export default Marathons;
+export default MarathonCard;
