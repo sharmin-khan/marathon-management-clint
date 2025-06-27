@@ -8,6 +8,7 @@ import PrivateRoutes from "../Routes/PrivateRoutes";
 import MarathonDetails from "../Pages/MarathonDetails/MarathonDetails";
 import Marathons from "../Section/Marathons";
 import MarathonCard from "../Pages/MarathonCard/MarathonCard";
+import MarathonRegistrationForm from "../Pages/MarathonRegistrationForm/MarathonRegistrationForm";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
       },
+      {
+        path:"/register/:id",
+        element:<PrivateRoutes><MarathonRegistrationForm></MarathonRegistrationForm></PrivateRoutes>
+      }
     ],
   },
 ]);
