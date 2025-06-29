@@ -54,7 +54,7 @@ const MyApply = () => {
         clearTimeout(timeout);
       }
     };
-  }, [searchTerm, user]);
+  }, [searchTerm, user?.email]);
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);

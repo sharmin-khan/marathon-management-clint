@@ -43,13 +43,13 @@ const AddMarathons = () => {
 
     // Format dates for backend
     const formattedData = {
-      ...formData,
-      registrationStart: formData.registrationStart.toISOString(),
-      registrationEnd: formData.registrationEnd.toISOString(),
-      marathonStartDate: formData.marathonStartDate.toISOString(),
-      createdAt: new Date().toISOString(),
-      registrationCount: 0,
-    };
+  ...formData,
+  registrationStart: formData.registrationStart?.toLocaleDateString("en-CA"),
+  registrationEnd: formData.registrationEnd?.toLocaleDateString("en-CA"),
+  marathonStartDate: formData.marathonStartDate?.toLocaleDateString("en-CA"),
+  createdAt: new Date().toISOString(), 
+  registrationCount: 0,
+};
 
     try {
       const response = await fetch("http://localhost:5000/add-marathon", {
