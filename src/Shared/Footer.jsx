@@ -44,7 +44,7 @@ const Footer = () => {
             </li>
             <li>
               <NavLink
-                to="/marathons"
+                to="/marathonCard"
                 className={({ isActive }) =>
                   `text-md font-semibold  py-1 rounded hover:bg-gray-200 ${
                     isActive ? "text-blue-600" : "text-gray-700"
