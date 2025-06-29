@@ -9,6 +9,10 @@ import MarathonDetails from "../Pages/MarathonDetails/MarathonDetails";
 import Marathons from "../Section/Marathons";
 import MarathonCard from "../Pages/MarathonCard/MarathonCard";
 import MarathonRegistrationForm from "../Pages/MarathonRegistrationForm/MarathonRegistrationForm";
+import MyApply from "../Pages/Dashboard/MyApply";
+import DashboardLayout from "../Pages/Dashboard/DashboardLayout";
+import MyMarathonList from "../Pages/Dashboard/MyMarathonList";
+import AddMarathons from "../Pages/Dashboard/AddMarathons";
 
 const router = createBrowserRouter([
   {
@@ -29,8 +33,12 @@ const router = createBrowserRouter([
         Component: Login,
       },
       {
-       path:'marathonCard',
-       element:<PrivateRoutes><MarathonCard></MarathonCard></PrivateRoutes>
+        path: "marathonCard",
+        element: (
+          <PrivateRoutes>
+            <MarathonCard></MarathonCard>
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/marathonDetails/:id",
@@ -41,9 +49,35 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path:"/register/:id",
-        element:<PrivateRoutes><MarathonRegistrationForm></MarathonRegistrationForm></PrivateRoutes>
-      }
+        path: "/register/:id",
+        element: (
+          <PrivateRoutes>
+            <MarathonRegistrationForm></MarathonRegistrationForm>
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/dashboard",
+        Component: DashboardLayout,
+        children: [
+          {
+            path:'/dashboard/addMarathons',
+            element:<PrivateRoutes><AddMarathons></AddMarathons></PrivateRoutes>
+          },
+          {
+            path:"/dashboard/myMarathonList",
+            element:<PrivateRoutes><MyMarathonList></MyMarathonList></PrivateRoutes>
+          },
+               {
+            path: "/dashboard/myApply",
+            element: (
+              <PrivateRoutes>
+                <MyApply></MyApply>
+              </PrivateRoutes>
+            ),
+          }
+        ],
+      },
     ],
   },
 ]);

@@ -9,6 +9,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../Firebase/Firebase.init";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
@@ -31,6 +32,7 @@ const AuthProvider = ({ children }) => {
   };
 
  const googleLogin = () => {
+  setLoading(true);
   return signInWithPopup(auth, googleProvider);
 };
 
@@ -52,6 +54,9 @@ const AuthProvider = ({ children }) => {
     logoutUser,
     googleLogin
   };
+  if (loading) {
+    return <LoadingSpinner />;
+  }
   return <AuthContext value={authInfo}>{children}</AuthContext>;
 };
 

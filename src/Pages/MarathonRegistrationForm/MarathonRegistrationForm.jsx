@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useLocation, useNavigate, useParams } from "react-router";
-import { AuthContext } from "../../Context/AuthContext";
+import Swal from "sweetalert2";
 
 
 const MarathonRegistrationForm = () => {
-  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const { id } = useParams();
   const location = useLocation();
@@ -14,7 +14,7 @@ const MarathonRegistrationForm = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    contact: "",
+    contactNumber: "",
     additionalInfo: "",
   });
 
@@ -28,7 +28,7 @@ const MarathonRegistrationForm = () => {
 
     const registrationData = {
       marathonId: id,
-      email: userEmail,
+      userEmail: userEmail,
       marathonTitle,
       marathonStartDate,
       ...formData,
@@ -48,14 +48,24 @@ const MarathonRegistrationForm = () => {
       await fetch(`http://localhost:5000/update-count/${id}`, {
         method: "PATCH",
       });
+       Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Form Submitted Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
 
       // 3. Navigate to Dashboard
-      navigate("/dashboard/my-apply");
+      navigate("/dashboard/myApply");
     }
   };
 
   return (
     <div className="max-w-xl mx-auto mt-10 p-6 shadow-lg rounded bg-white dark:bg-gray-800">
+      <Helmet>
+      <title>Marathon Registration Form | MarathonPro</title>
+      </Helmet>
       <h2 className="text-2xl font-bold text-blue-600 mb-6">
         Register for {marathonTitle}
       </h2>
@@ -83,7 +93,7 @@ const MarathonRegistrationForm = () => {
           onChange={handleChange}
         />
         <input
-          name="contact"
+          name="contactNumber"
           type="text"
           placeholder="Contact Number"
           className="input input-bordered w-full"

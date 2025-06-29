@@ -41,6 +41,7 @@ const Marathons = () => {
               </h2>
               <p className="text-gray-600 dark:text-gray-300 text-md lg:text-lg font-semibold">
                 🌍 {event.location} <br />
+                🏃 Distance: {event.runningDistance} <br />
                 🗓️ Registration: {event.registrationStart} –{" "}
                 {event.registrationEnd}
               </p>

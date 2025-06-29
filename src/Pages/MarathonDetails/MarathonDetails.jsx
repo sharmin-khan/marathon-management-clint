@@ -26,6 +26,7 @@ const MarathonDetails = () => {
     registrationEnd,
     details,
     registrationCount,
+    runningDistance,
   } = marathon;
 
   const isRegistrationOpen =
@@ -136,6 +137,9 @@ const MarathonDetails = () => {
           </h2>
           <p className="text-gray-700 dark:text-gray-300 text-md lg:text-lg">
             <span className="font-medium">Location : {location}</span>
+          </p>
+          <p className="text-gray-700 dark:text-gray-300 text-md lg:text-lg">
+            <span className="font-medium">Distance : {runningDistance}</span>
           </p>
           <p className="text-gray-700 dark:text-gray-300 text-md lg:text-lg">
             <span className="font-medium">Registration : </span>{" "}

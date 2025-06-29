@@ -1,5 +1,5 @@
-
 import React, { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router";
 
 const MarathonCard = () => {
@@ -15,6 +15,9 @@ const MarathonCard = () => {
 
   return (
     <div className="py-10 bg-white dark:bg-gray-900 transition-colors duration-300">
+      <Helmet>
+        <title>Marathons | MarathonPro</title>
+      </Helmet>
       <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mt-10 mb-6">
         Marathon series 
       </h2>
@@ -43,6 +46,7 @@ const MarathonCard = () => {
               </h2>
               <p className="text-gray-600 dark:text-gray-300 text-md font-semibold">
                 🌍 {event.location} <br />
+                🏃 Distance: {event.runningDistance} <br />
                 🗓️ Registration: {event.registrationStart} –{" "}
                 {event.registrationEnd}
               </p>
