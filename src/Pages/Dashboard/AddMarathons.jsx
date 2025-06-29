@@ -11,7 +11,7 @@ const AddMarathons = () => {
   const [formData, setFormData] = useState({
     title: "",
     location: "",
-    runningDistance: "10k",
+    runningDistance: "Choose Option",
     description: "",
     image: "",
     registrationStart: null,
@@ -75,7 +75,7 @@ const AddMarathons = () => {
         setFormData({
           title: "",
           location: "",
-          runningDistance: "10k",
+          runningDistance: "Choose Option",
           description: "",
           image: "",
           registrationStart: null,
@@ -151,6 +151,9 @@ const AddMarathons = () => {
                 className="select select-bordered w-full"
                 required
               >
+                <option disabled value="Choose Option">
+                  -- Choose Distance --
+                </option>
                 <option value="3k">3k</option>
                 <option value="10k">10k</option>
                 <option value="25k">25k</option>
