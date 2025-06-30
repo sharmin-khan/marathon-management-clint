@@ -6,7 +6,7 @@ const Marathons = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/marathon")
+    fetch("https://marathon-management-server-seven.vercel.app/marathon")
       .then((res) => res.json())
       .then((data) => setMarathons(data));
   }, []);

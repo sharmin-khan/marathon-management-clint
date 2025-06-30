@@ -2,7 +2,7 @@
 
 MarathonPro is a comprehensive web application designed to connect runners with marathon events. It provides a seamless platform for users to discover, register for, and manage their marathon participation. Event organizers can also use the platform to list and manage their marathons.
 
-##[Live Site] -
+##[Live Site] - https://marathon-management-syst-3a566.web.app/
 
 ##  Key Features
 

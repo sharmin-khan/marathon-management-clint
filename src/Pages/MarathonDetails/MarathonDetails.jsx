@@ -11,7 +11,7 @@ const MarathonDetails = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/marathon/${id}`)
+    fetch(`https://marathon-management-server-seven.vercel.app/marathon/${id}`)
       .then((res) => res.json())
       .then((data) => setMarathon(data));
   }, [id]);

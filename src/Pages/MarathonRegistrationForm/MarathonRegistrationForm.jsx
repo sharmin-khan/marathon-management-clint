@@ -35,7 +35,7 @@ const MarathonRegistrationForm = () => {
     };
 
     // 1. POST Registration Data
-    const res = await fetch("http://localhost:5000/register-marathon", {
+    const res = await fetch("https://marathon-management-server-seven.vercel.app/register-marathon", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(registrationData),
@@ -45,7 +45,7 @@ const MarathonRegistrationForm = () => {
 
     if (result.success) {
       // 2. Update registration count
-      await fetch(`http://localhost:5000/update-count/${id}`, {
+      await fetch(`https://marathon-management-server-seven.vercel.app/update-count/${id}`, {
         method: "PATCH",
       });
        Swal.fire({

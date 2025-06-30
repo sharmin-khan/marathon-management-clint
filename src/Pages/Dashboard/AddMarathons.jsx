@@ -52,7 +52,7 @@ const AddMarathons = () => {
 };
 
     try {
-      const response = await fetch("http://localhost:5000/add-marathon", {
+      const response = await fetch("https://marathon-management-server-seven.vercel.app/add-marathon", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

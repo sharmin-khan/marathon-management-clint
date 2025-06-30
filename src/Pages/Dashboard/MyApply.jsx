@@ -21,8 +21,8 @@ const MyApply = () => {
   const fetchData = async (search = "") => {
     try {
       const url = search 
-        ? `http://localhost:5000/myApply?userEmail=${user.email}&search=${encodeURIComponent(search)}`
-        : `http://localhost:5000/myApply?userEmail=${user.email}`;
+        ? `https://marathon-management-server-seven.vercel.app/myApply?userEmail=${user.email}&search=${encodeURIComponent(search)}`
+        : `https://marathon-management-server-seven.vercel.app/myApply?userEmail=${user.email}`;
       
       const response = await fetch(url);
       const data = await response.json();
@@ -71,7 +71,7 @@ const MyApply = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/deleteApply/${id}`, {
+        fetch(`https://marathon-management-server-seven.vercel.app/deleteApply/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -86,7 +86,7 @@ const MyApply = () => {
   };
 
   const handleUpdate = () => {
-    fetch(`http://localhost:5000/updateApply/${selectedApply._id}`, {
+    fetch(`https://marathon-management-server-seven.vercel.app/updateApply/${selectedApply._id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
