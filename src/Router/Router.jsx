@@ -3,6 +3,8 @@ import MainLayout from "../Layouts/MainLayout";
 import Home from "../Pages/Home/Home";
 import Register from "../Pages/Home/Register";
 import Login from "../Pages/Home/Login";
+import Blog from "../Pages/Blog";
+import About from "../Pages/About";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PrivateRoutes from "../Routes/PrivateRoutes";
 import MarathonDetails from "../Pages/MarathonDetails/MarathonDetails";
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
       {
         path: "login",
         Component: Login,
+      },
+      {
+        path: "blog",
+        Component: Blog,
+      },
+      {
+        path: "about",
+        Component: About,
       },
       {
         path: "marathonCard",
