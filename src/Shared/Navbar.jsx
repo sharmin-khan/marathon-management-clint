@@ -3,7 +3,8 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Context/AuthContext";
 import { FaUserCircle } from "react-icons/fa";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
-import logo3 from "../assets/image/logo3.jpg";
+import { FaRunning } from "react-icons/fa";
+// import logo3 from "../assets/image/logo3.jpg";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
@@ -99,7 +100,9 @@ const Navbar = () => {
       {/* Left - Logo */}
       <div className="navbar-start flex items-center ">
         <Link to="/" className="text-2xl font-bold flex items-center">
-          <img src={logo3} alt="Logo" className="w-14 h-14 rounded-md" />
+          {/* <img src={logo3} alt="Logo" className="w-14 h-14 rounded-md" /> */}
+          <FaRunning size={36} className="text-blue-600" />
+          
           <span>
             <span className="text-blue-600">Marathon</span>
             <span className="text-yellow-400">Pro</span>

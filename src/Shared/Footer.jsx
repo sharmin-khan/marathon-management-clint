@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router";
 import { FaYoutube, FaFacebookF, FaInstagram } from "react-icons/fa";
-import logo3 from "../assets/image/logo3.jpg";
+import { FaRunning } from "react-icons/fa";
+// import logo3 from "../assets/image/logo3.jpg";
 import { useContext } from "react";
 import { AuthContext } from "../Context/AuthContext";
 
@@ -12,7 +13,8 @@ const Footer = () => {
         {/* Logo & Description */}
         <div className="flex-1 ">
           <Link to="/" className="flex items-center text-2xl font-bold mb-3">
-            <img src={logo3} alt="Logo" className="w-14 h-14 rounded-md" />
+            {/* <img src={logo3} alt="Logo" className="w-14 h-14 rounded-md" /> */}
+             <FaRunning size={36} className="text-blue-600" />
             <span>
               <span className="text-blue-600">Marathon</span>
               <span className="text-yellow-400">Pro</span>
