@@ -74,6 +74,22 @@ const Navbar = () => {
           Marathons
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/blog"
+          className={({ isActive }) =>
+            `text-base lg:text-sm xl:text-lg font-bold px-3 py-1 rounded  hover:bg-gray-200 ${
+              isActive
+              ? "text-blue-600"
+              : theme === "night"
+              ? "text-gray-400"
+              : "text-gray-700"
+            }`
+          }
+        >
+          Blog
+        </NavLink>
+      </li>
       {user && (
         <li>
           <NavLink
@@ -92,13 +108,31 @@ const Navbar = () => {
           </NavLink>
         </li>
       )}
+      {!user && (
+        <li>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `text-base lg:text-sm xl:text-lg font-bold px-3 py-1 rounded  hover:bg-gray-200 ${
+               isActive
+              ? "text-blue-600"
+              : theme === "night"
+              ? "text-gray-400"
+              : "text-gray-700"
+              }`
+            }
+          >
+            About
+          </NavLink>
+        </li>
+      )}
     </>
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-md px-4">
+    <div className="navbar bg-base-100 shadow-md dark:border-b-1 px-4 fixed top-0 left-0 w-full z-50 ">
       {/* Left - Logo */}
-      <div className="navbar-start flex items-center ">
+      <div className="navbar-start flex items-center">
         <Link to="/" className="text-2xl font-bold flex items-center">
           {/* <img src={logo3} alt="Logo" className="w-14 h-14 rounded-md" /> */}
           <FaRunning size={36} className="text-blue-600" />
@@ -156,13 +190,13 @@ const Navbar = () => {
             <>
               <NavLink
                 to="/login"
-                className="text-sm xl:text-base font-bold px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700"
+                className="text-sm xl:text-base font-bold px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
               >
                 Login
               </NavLink>
               <NavLink
                 to="/register"
-                className="text-sm xl:text-base font-bold px-3 py-1 bg-yellow-400 text-white rounded hover:bg-yellow-500"
+                className="text-sm xl:text-base font-bold px-3 py-2 bg-yellow-400 text-white rounded hover:bg-yellow-500"
               >
                 Register
               </NavLink>
@@ -221,7 +255,7 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/login"
-                    className="text-base font-bold px-4 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 w-full"
+                    className="text-base font-bold px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 w-full mb-2"
                   >
                     Login
                   </NavLink>
@@ -229,7 +263,7 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/register"
-                    className="text-base font-bold px-4 py-1 bg-yellow-400 text-white rounded hover:bg-yellow-500 w-full"
+                    className="text-base font-bold px-4 py-2 bg-yellow-400 text-white rounded hover:bg-yellow-500 w-full"
                   >
                     Register
                   </NavLink>

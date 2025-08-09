@@ -15,7 +15,7 @@ import Marathons from "../../Section/Marathons";
 
 const Home = () => {
   return (
-    <div className="w-full px-4 md:px-6 lg:px-8 my-4">
+    <div className="w-full px-4 md:px-6 lg:px-4 my-4 lg:pt-20 pt-16">
        <Helmet>
         <title>Home | MarathonPro</title>
       </Helmet>
