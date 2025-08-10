@@ -62,11 +62,15 @@ const UpcomingMarathon = () => {
   ];
 
   return (
-    <div className="py-12 bg-gray-100 dark:bg-gray-900">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mb-10">
+    <div className="py-10">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mb-4">
         Upcoming Marathons
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
+      <p className="text-center max-w-2xl mx-auto text-gray-700 dark:text-gray-300 mb-10">
+  Discover the latest marathon events happening near you. 
+  Register early to secure your spot and prepare for an unforgettable race experience.
+</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {upcoming.map((event, idx) => (
           <div
             key={idx}
@@ -101,16 +105,12 @@ const UpcomingMarathon = () => {
           </div>
         ))}
       </div>
-      <div className="text-center mt-16">
-        <a
-          href="#"
-          className="lg:mt-6 mt-2 rounded-md px-6 py-3 m-1 relative group cursor-pointer border-2 font-medium bg-[#0080db4f] border-blue-600 text-white overflow-hidden"
-        >
-          <span className="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 bg-blue-600 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease -z-10"></span>
-          <span className="relative z-10 text-white transition duration-300 group-hover:text-white ease">
-            View All Events
-          </span>
-        </a>
+      <div className="text-center mt-6">
+        <button
+                className="rounded-md px-6 py-3 m-1 overflow-hidden relative group cursor-pointer  font-medium bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 shadow-lg"
+              >
+               View All Events
+              </button>
       </div>
     </div>
   );

@@ -130,22 +130,23 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-md dark:border-b-1 px-4 fixed top-0 left-0 w-full z-50 ">
-      {/* Left - Logo */}
-      <div className="navbar-start flex items-center">
-        <Link to="/" className="text-2xl font-bold flex items-center">
-          {/* <img src={logo3} alt="Logo" className="w-14 h-14 rounded-md" /> */}
-          <FaRunning size={36} className="text-blue-600" />
-          
-          <span>
-            <span className="text-blue-600">Marathon</span>
-            <span className="text-yellow-400">Pro</span>
-          </span>
-        </Link>
-      </div>
+    <div className="navbar bg-base-100 shadow-md dark:border-b-1 fixed top-0 left-0 w-full z-50 px-0 mx-0">
+      <div className="w-11/12 mx-auto  flex justify-between items-center">
+        {/* Left - Logo */}
+        <div className="navbar-start flex items-center">
+          <Link to="/" className="text-2xl font-bold flex items-center">
+            {/* <img src={logo3} alt="Logo" className="w-14 h-14 rounded-md" /> */}
+            <FaRunning size={28} className="text-blue-600" />
+            
+            <span>
+              <span className="text-blue-600">Marathon</span>
+              <span className="text-yellow-400">Pro</span>
+            </span>
+          </Link>
+        </div>
 
-      {/* Right */}
-      <div className="navbar-end flex items-center gap-4">
+        {/* Right */}
+        <div className="navbar-end flex items-center gap-4">
         {/* Theme Toggle */}
         <label className="flex items-center cursor-pointer">
           <input
@@ -162,27 +163,35 @@ const Navbar = () => {
         </label>
 
         {/* Large menu */}
-        <ul className="menu menu-horizontal hidden lg:flex gap-4 px-1 items-center">
+        <ul className="menu menu-horizontal hidden lg:flex gap-4 pr-0 items-center">
           {navLinks}
-          {/* Avatar */}
-          {user?.photoURL ? (
-            <li className="flex justify-center">
-              <img
-                src={user.photoURL}
-                alt="user"
-                className="w-16 h-14 rounded-full"
-              />
-            </li>
-          ) : user ? (
-            <li className="flex justify-center">
-              <FaUserCircle className="text-2xl" />
-            </li>
-          ) : null}
+                     {/* Avatar */}
+           {user?.photoURL ? (
+             <li className="flex justify-center ">
+               <img
+                 src={user.photoURL}
+                 alt="user"
+                 className={`w-12 h-12 rounded-full object-cover border-2 shadow-md ${
+                   theme === "night" 
+                     ? "border-gray-600" 
+                     : "border-gray-200"
+                 }`}
+               />
+             </li>
+           ) : user ? (
+             <li className="flex justify-center">
+               <FaUserCircle className={`text-3xl ${
+                 theme === "night" 
+                   ? "text-gray-400" 
+                   : "text-gray-600"
+               }`} />
+             </li>
+           ) : null}
 
           {user ? (
             <button
               onClick={handleLogOut}
-              className="text-sm xl:text-base font-bold px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+              className="text-sm xl:text-base font-bold px-6 py-3 bg-red-500 text-white rounded hover:bg-red-600 cursor-pointer"
             >
               Logout
             </button>
@@ -190,13 +199,13 @@ const Navbar = () => {
             <>
               <NavLink
                 to="/login"
-                className="text-sm xl:text-base font-bold px-3 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                className="text-sm xl:text-base font-bold px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer"
               >
                 Login
               </NavLink>
               <NavLink
                 to="/register"
-                className="text-sm xl:text-base font-bold px-3 py-2 bg-yellow-400 text-white rounded hover:bg-yellow-500"
+                className="text-sm xl:text-base font-bold px-6 py-3 bg-yellow-400 text-white rounded hover:bg-yellow-500 cursor-pointer"
               >
                 Register
               </NavLink>
@@ -227,25 +236,33 @@ const Navbar = () => {
           >
             {navLinks}
 
-            {user?.photoURL ? (
-              <li className="flex justify-center">
-                <img
-                  src={user.photoURL}
-                  alt="user"
-                  className="w-16 h-14 rounded-full"
-                />
-              </li>
-            ) : user ? (
-              <li className="flex justify-center">
-                <FaUserCircle className="text-2xl" />
-              </li>
-            ) : null}
+                         {user?.photoURL ? (
+               <li className="flex justify-center">
+                 <img
+                   src={user.photoURL}
+                   alt="user"
+                   className={`w-16 h-16 rounded-full object-cover border-2 shadow-md mx-auto ${
+                     theme === "night" 
+                       ? "border-gray-600" 
+                       : "border-gray-200"
+                   }`}
+                 />
+               </li>
+             ) : user ? (
+               <li className="flex justify-center">
+                 <FaUserCircle className={`text-4xl ${
+                   theme === "night" 
+                     ? "text-gray-200" 
+                     : "text-gray-600"
+                 }`} />
+               </li>
+             ) : null}
 
             {user ? (
               <li>
                 <button
                   onClick={handleLogOut}
-                  className="text-base font-bold px-4 py-1 bg-red-500 text-white rounded hover:bg-red-600 w-full"
+                  className="text-base font-bold px-6 py-3 bg-red-500 text-white rounded hover:bg-red-600 w-full"
                 >
                   Logout
                 </button>
@@ -255,7 +272,7 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/login"
-                    className="text-base font-bold px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 w-full mb-2"
+                    className="text-base font-bold  px-6 py-3 bg-blue-600 text-white rounded hover:bg-blue-700 w-full mb-2"
                   >
                     Login
                   </NavLink>
@@ -263,7 +280,7 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/register"
-                    className="text-base font-bold px-4 py-2 bg-yellow-400 text-white rounded hover:bg-yellow-500 w-full"
+                    className="text-base font-bold  px-6 py-3 bg-yellow-400 text-white rounded hover:bg-yellow-500 w-full"
                   >
                     Register
                   </NavLink>
@@ -272,6 +289,7 @@ const Navbar = () => {
             )}
           </ul>
         </div>
+      </div>
       </div>
     </div>
   );

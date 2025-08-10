@@ -227,7 +227,7 @@ const Blog = () => {
         </div>
 
         {/* Newsletter Subscription */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-white text-center">
+        <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-8 text-white text-center">
           <h3 className="text-2xl font-bold mb-2">Stay Updated</h3>
           <p className="text-blue-100 mb-6">
             Get the latest marathon tips, training advice, and success stories delivered to your inbox

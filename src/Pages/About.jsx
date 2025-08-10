@@ -36,19 +36,19 @@ const About = () => {
     {
       name: "Sarah Johnson",
       role: "Founder & CEO",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300",
+      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face",
       bio: "Former professional runner with 15+ years of experience in marathon organization."
     },
     {
       name: "Mike Chen",
       role: "Head of Operations",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face",
       bio: "Sports management expert specializing in large-scale athletic events."
     },
     {
       name: "Lisa Wang",
       role: "Technical Director",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300",
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face",
       bio: "Tech enthusiast passionate about creating seamless digital experiences for athletes."
     }
   ];
@@ -145,6 +145,9 @@ const About = () => {
                   src={member.image}
                   alt={member.name}
                   className="w-full h-64 object-cover"
+                  onError={(e) => {
+                    e.target.src = "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=300&h=300&fit=crop&crop=face";
+                  }}
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">
@@ -163,7 +166,7 @@ const About = () => {
         </div>
 
         {/* Contact Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl p-8 text-white">
+        <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-xl p-8 text-white">
           <h2 className="text-3xl font-bold text-center mb-8">Get in Touch</h2>
           <div className="grid md:grid-cols-3 gap-8 text-center">
             <div>

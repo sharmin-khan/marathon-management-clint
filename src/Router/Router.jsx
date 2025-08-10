@@ -44,11 +44,12 @@ const router = createBrowserRouter([
       },
       {
         path: "marathonCard",
-        element: (
-          <PrivateRoutes>
-            <MarathonCard></MarathonCard>
-          </PrivateRoutes>
-        ),
+        Component:MarathonCard,
+        // element: (
+        //   <PrivateRoutes>
+        //     <MarathonCard></MarathonCard>
+        //   </PrivateRoutes>
+        // ),
       },
       {
         path: "/marathonDetails/:id",

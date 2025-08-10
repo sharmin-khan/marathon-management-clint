@@ -12,20 +12,21 @@ const Marathons = () => {
   }, []);
 
   return (
-    <div className="py-10 bg-white dark:bg-gray-900 transition-colors duration-300">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mt-10 mb-6">
-        Marathon Series
-      </h2>
-      <p className="text-center max-w-2xl mx-auto text-gray-700 dark:text-gray-300 mb-10">
-        Join exciting marathon Series happening across the globe. Register now
-        to test your endurance, meet passionate runners, and be a part of
-        something unforgettable!
-      </p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 px-2">
+    <div className="py-10  bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div >
+        <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mb-4">
+          Marathon Series
+        </h2>
+        <p className="text-center max-w-2xl mx-auto text-gray-700 dark:text-gray-300 mb-10">
+          Join exciting marathon Series happening across the globe. Register now
+          to test your endurance, meet passionate runners, and be a part of
+          something unforgettable!
+        </p>
+        <div className=" grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {marathons.map((event, idx) => (
           <div
             key={idx}
-            className="card group w-full sm:w-[22rem] lg:w-[20rem] xl:w-[28rem] bg-base-100 shadow-md dark:bg-gray-800 transition duration-300"
+            className="card group w-full bg-base-100 shadow-md dark:bg-gray-800 transition duration-300"
           >
             <figure className="overflow-hidden">
               <img
@@ -56,6 +57,7 @@ const Marathons = () => {
             </div>
           </div>
         ))}
+        </div>
       </div>
     </div>
   );

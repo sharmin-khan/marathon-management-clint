@@ -2,7 +2,8 @@ import { FaRunning, FaHeart, FaMedal, FaUsers } from "react-icons/fa";
 
 const WhyJoinMarathon = () => {
   return (
-    <section className="bg-gray-100 dark:bg-gray-900 py-12 px-4 md:px-16">
+    <section className="dark:bg-gray-900 py-10">
+      <div>
       <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mb-6">
         Why Join a Marathon?
       </h2>
@@ -54,7 +55,8 @@ const WhyJoinMarathon = () => {
           <p className="text-gray-600 dark:text-gray-400">
             Connect with runners from all over the country.
           </p>
-        </div>
+                 </div>
+       </div>
       </div>
     </section>
   );

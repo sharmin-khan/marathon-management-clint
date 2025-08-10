@@ -134,23 +134,6 @@ const AddMarathons = () => {
 
       {/* Form Section */}
       <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-        {/* Form Header */}
-        <div className="bg-gradient-to-r from-slate-50 to-blue-50 dark:from-gray-700 dark:to-gray-800 px-8 py-6 border-b border-gray-200 dark:border-gray-600">
-          <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center shadow-lg">
-              <FaFileAlt className="text-xl text-white" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Marathon Details
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300">
-                Fill in the information below to create your marathon event
-              </p>
-            </div>
-          </div>
-        </div>
-
         {/* Form Content */}
         <form onSubmit={handleSubmit} className="p-8 space-y-8">
           {/* Basic Information Section */}
@@ -341,11 +324,11 @@ const AddMarathons = () => {
           </div>
 
           {/* Submit Button Section */}
-          <div className="flex justify-end pt-6 border-t border-gray-200 dark:border-gray-600">
+          <div className="pt-6 border-t border-gray-200 dark:border-gray-600 flex justify-end">
           <button
                 type="submit"
                 disabled={loading}
-                className="px-10 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center gap-3 min-w-[200px] justify-center"
+                className="px-10 py-4 cursor-pointer bg-gradient-to-r from-blue-600 to-blue-700 dark:from-blue-700 dark:to-blue-800 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center gap-3 min-w-[200px] justify-center"
               >
                 {loading ? (
                   <>
@@ -354,7 +337,6 @@ const AddMarathons = () => {
                   </>
                 ) : (
                   <>
-                    <FaPlus className="text-lg" />
                     <span>Add Marathon</span>
                   </>
                 )}

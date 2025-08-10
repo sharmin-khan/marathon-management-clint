@@ -40,14 +40,19 @@ const runners = [
 
 const TopRunners = () => {
   return (
-    <div className="py-12 bg-gray-100 dark:bg-gray-900 overflow-hidden">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mb-10">
+    <div className="py-10 dark:bg-gray-900 overflow-hidden">
+      <div>
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mb-4">
         Top Marathon Runners
       </h2>
+      <p className="text-center max-w-2xl mx-auto text-gray-700 dark:text-gray-300 mb-10">
+  Meet the fastest and most dedicated runners who have excelled in marathons around the world. 
+  Get inspired by their achievements and stories.
+</p>
 
       {/* Scrolling Container */}
       <div className="relative w-full">
-        <div className="flex gap-10 animate-marquee whitespace-nowrap px-4">
+        <div className="flex gap-10 animate-marquee whitespace-nowrap">
           {runners.concat(runners).map((runner, index) => (
             <div
               key={index}
@@ -72,7 +77,8 @@ const TopRunners = () => {
               <p className="italic text-blue-500 mt-2">“{runner.quote}”</p>
             </div>
           ))}
-        </div>
+                 </div>
+       </div>
       </div>
     </div>
   );

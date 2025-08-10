@@ -272,7 +272,7 @@ const MyApply = () => {
                     <div className="flex items-center gap-2">
                       {/* Update Button */}
                       <button
-                        className="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-sm font-medium rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 border-0 focus:ring-2 focus:ring-amber-300 focus:ring-offset-2"
+                        className="inline-flex cursor-pointer items-center gap-2 px-3 py-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-sm font-medium rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 border-0 focus:ring-2 focus:ring-amber-300 focus:ring-offset-2"
                         onClick={() => setSelectedApply({ ...item })}
                       >
                         <FaEdit className="text-sm" />
@@ -282,7 +282,7 @@ const MyApply = () => {
                       {/* Delete Button */}
                       <button
                         onClick={() => handleDelete(item._id)}
-                        className="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-600 text-white text-sm font-medium rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 border-0 focus:ring-2 focus:ring-red-300 focus:ring-offset-2"
+                        className="inline-flex cursor-pointer items-center gap-2 px-3 py-2 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-600 text-white text-sm font-medium rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 border-0 focus:ring-2 focus:ring-red-300 focus:ring-offset-2"
                       >
                         <FaTrash className="text-sm" />
                         Delete
