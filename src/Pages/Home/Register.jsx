@@ -176,7 +176,7 @@ const Register = () => {
             
             {/* Upload Instructions */}
             <p className="text-xs text-gray-500 mt-2 text-center">
-              Supports: JPG, PNG, GIF 
+              Supports: JPG, PNG
             </p>
           </div>
 

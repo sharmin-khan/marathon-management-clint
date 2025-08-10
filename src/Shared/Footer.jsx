@@ -94,7 +94,7 @@ const Footer = () => {
                       }`
                     }
                   >
-                    Blog
+                    Blogs
                   </NavLink>
                 </li>
                 <li>
