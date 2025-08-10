@@ -20,10 +20,10 @@ const DashboardLayout = () => {
       </header>
 
       {/* Main Content */}
-      <div className="flex flex-1 flex-col md:flex-row">
+      <div className="w-11/12 mx-auto flex flex-1 flex-col md:flex-row">
         {/* Sidebar */}
         <aside className="w-full md:w-64 bg-white dark:bg-gray-800 border-b md:border-b-0 md:border-r border-gray-200 dark:border-gray-700 shadow-sm">
-          <div className="p-6">
+          <div className="py-6 pl-1">
            
             <ul className="space-y-3">
               <li>

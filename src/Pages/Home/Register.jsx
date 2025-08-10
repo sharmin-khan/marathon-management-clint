@@ -1,23 +1,57 @@
-import React, { use, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import Lottie from "lottie-react";
 import registerLottie from "../../assets/image/register.json";
 import { AuthContext } from "../../Context/AuthContext";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet-async";
+import { FaEye, FaEyeSlash, FaCamera } from "react-icons/fa";
 
 const Register = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } , []);
+  
   const { createUser, googleLogin } = use(AuthContext);
   const [showPasswordRules, setShowPasswordRules] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
   const navigate = useNavigate();
+
+  // Handle image selection
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setSelectedImage(file);
+    }
+  };
+
+  // Remove selected image
+  const removeImage = () => {
+    setSelectedImage(null);
+    // Reset file input
+    const fileInput = document.getElementById('photo-upload');
+    if (fileInput) fileInput.value = '';
+  };
+
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
-    const photo = form.photo.value;
     const password = form.password.value;
-    console.log(name, email, photo, password);
+    
+    // Check if image is selected
+    if (!selectedImage) {
+      Swal.fire({
+        icon: "error",
+        title: "Photo Required",
+        text: "Please select a profile photo",
+      });
+      return;
+    }
+
+    console.log(name, email, selectedImage, password);
 
     // Password Validation
     const errors = [];
@@ -52,6 +86,7 @@ const Register = () => {
         console.log(err);
       });
   };
+
   //Google register
   const handleGoogleRegister = () => {
     googleLogin()
@@ -70,8 +105,9 @@ const Register = () => {
         console.log("Google Login Error:", err);
       });
   };
+
   return (
-    <div className="min-h-screen  flex flex-col md:flex-row items-center justify-center gap-8 py-8 bg-gray-100 dark:bg-gray-900 px-4">
+    <div className="min-h-screen pt-28 flex flex-col md:flex-row items-center justify-center gap-8 py-8 bg-gray-100 dark:bg-gray-900 px-4">
       <Helmet>
         <title>Register | MarathonPro</title>
       </Helmet>
@@ -85,39 +121,85 @@ const Register = () => {
             Register Now
           </h2>
 
-          <label className="label">Name</label>
+          <label className="label mb-1">Name</label>
           <input
             type="text"
             name="name"
             placeholder="Name"
             className="input input-bordered w-full mb-4"
+            required
           />
 
-          <label className="label">Email</label>
+          <label className="label mb-1">Email</label>
           <input
             type="email"
             name="email"
             placeholder="Email"
             className="input input-bordered w-full mb-4"
+            required
           />
 
-          <label className="label">Photo URL</label>
-          <input
-            type="url"
-            name="photo"
-            placeholder="Photo URL"
-            className="input input-bordered w-full mb-4"
-          />
+          {/* Photo Upload Section */}
+          <label className="label mb-1">Photo</label>
+          <div className="mb-4">
+            {/* File Upload Input */}
+            <div className="relative">
+              <input
+                type="file"
+                id="photo-upload"
+                accept="image/*"
+                onChange={handleImageChange}
+                className="hidden"
+                required
+              />
+              <label
+                htmlFor="photo-upload"
+                className="input input-bordered w-full cursor-pointer flex items-center justify-center gap-2 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
+              >
+                <FaCamera className="text-blue-500" />
+                <span className="text-gray-600 dark:text-gray-300">
+                  {selectedImage ? selectedImage.name : "Choose Photo"}
+                </span>
+              </label>
+              
+              {/* Remove Button - Inside the field on the right */}
+              {selectedImage && (
+                <button
+                  type="button"
+                  onClick={removeImage}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600 transition-colors"
+                >
+                  ×
+                </button>
+              )}
+            </div>
+            
+            {/* Upload Instructions */}
+            <p className="text-xs text-gray-500 mt-2 text-center">
+              Supports: JPG, PNG, GIF 
+            </p>
+          </div>
 
-          <label className="label">Password</label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            className="input input-bordered w-full mb-1"
-            onFocus={() => setShowPasswordRules(true)}
-            onBlur={() => setShowPasswordRules(false)}
-          />
+          <label className="label mb-1">Password</label>
+          <div className="relative mb-1">
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              className="input input-bordered w-full pr-12"
+              onFocus={() => setShowPasswordRules(true)}
+              onBlur={() => setShowPasswordRules(false)}
+              required
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors z-10 cursor-pointer"
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </button>
+          </div>
+          
           {showPasswordRules && (
             <div className="text-sm text-red-400 mb-3">
               <p>Length must be at least 6 characters</p>
@@ -127,7 +209,7 @@ const Register = () => {
             </div>
           )}
 
-          <button type="submit" className="btn btn-primary w-full">
+          <button type="submit" className="bg-blue-600 hover:bg-blue-700 px-3 py-2 rounded-sm cursor-pointer text-white font-semibold text-lg mt-3 w-full">
             Register
           </button>
 

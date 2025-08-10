@@ -3,8 +3,12 @@ import { useParams, useNavigate } from "react-router";
 import { AuthContext } from "../../Context/AuthContext";
 import { Helmet } from "react-helmet-async";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
+import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 
 const MarathonDetails = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   const { id } = useParams();
   const [marathon, setMarathon] = useState(null);
   const navigate = useNavigate();
@@ -16,7 +20,7 @@ const MarathonDetails = () => {
       .then((data) => setMarathon(data));
   }, [id]);
 
-  if (!marathon) return <div className="text-center py-10">Loading...</div>;
+  if (!marathon) return <div className="text-center py-10"><LoadingSpinner/></div>;
 
   const {
     title,
@@ -54,7 +58,7 @@ const MarathonDetails = () => {
   const seconds = remainingSeconds % 60;
 
   return (
-    <div className="max-w-5xl mx-auto px-4 py-10">
+    <div className="max-w-5xl mx-auto px-4 pt-28">
       <Helmet>
         <title>Marathon Details | MarathonPro</title>
       </Helmet>
