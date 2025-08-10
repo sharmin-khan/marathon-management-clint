@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaShieldAlt, FaClock, FaRoute, FaHandsHelping, FaTrophy, FaHeartbeat, FaWater, FaUtensils } from "react-icons/fa";
+import BackButton from "../../Shared/BackButton";
 
 const RaceManagement = () => {
   useEffect(() => {
@@ -241,6 +242,7 @@ const RaceManagement = () => {
           </div>
         </div> */}
       </div>
+      <BackButton />
     </div>
   );
 };

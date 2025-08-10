@@ -52,7 +52,7 @@ const MarathonCard = () => {
           {marathons.map((event, idx) => (
             <div
               key={idx}
-              className="card group w-full bg-base-100 shadow-md dark:bg-gray-800 transition duration-300"
+              className="card rounded-md group w-full bg-base-100 shadow-md dark:bg-gray-800 transition duration-300"
             >
               <figure className="overflow-hidden">
                 <img
@@ -63,7 +63,7 @@ const MarathonCard = () => {
               </figure>
 
               <div className="card-body">
-                <h2 className="card-title md:text-2xl text-blue-600 dark:text-blue-400">
+                <h2 className="card-title md:text-2xl text-blue-600">
                   {event.title}
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 text-md lg:text-lg font-semibold">
@@ -75,7 +75,7 @@ const MarathonCard = () => {
                 <div className="card-actions justify-end">
                   <button
                     onClick={() => navigate(`/marathonDetails/${event._id}`)}
-                    className="btn btn-md bg-blue-600 hover:bg-yellow-400 dark:bg-blue-400 dark:hover:bg-yellow-400 text-white"
+                    className="btn btn-md rounded-md bg-blue-600 hover:bg-yellow-400 text-white"
                   >
                     See Details →
                   </button>

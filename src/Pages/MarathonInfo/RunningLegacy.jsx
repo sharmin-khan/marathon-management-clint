@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaRunning, FaUtensils, FaShoePrints, FaUsers, FaChartLine, FaTrophy, FaHeart, FaDumbbell } from "react-icons/fa";
+import BackButton from "../../Shared/BackButton";
 
 const RunningLegacy = () => {
   useEffect(() => {
@@ -282,6 +283,7 @@ const RunningLegacy = () => {
           </div>
         </div> */}
       </div>
+      <BackButton />
     </div>
   );
 };

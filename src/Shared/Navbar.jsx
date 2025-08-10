@@ -122,7 +122,7 @@ const Navbar = () => {
               }`
             }
           >
-            About
+            About Us
           </NavLink>
         </li>
       )}

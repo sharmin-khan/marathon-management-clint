@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { FaGlobe, FaTrophy, FaCalendar, FaMapMarkerAlt, FaUsers, FaMedal } from "react-icons/fa";
+import BackButton from "../../Shared/BackButton";
 
 const GlobalMarathons = () => {
   useEffect(() => {
@@ -161,6 +162,9 @@ const GlobalMarathons = () => {
           </div>
         </div> */}
       </div>
+      
+        <BackButton />
+      
     </div>
   );
 };
