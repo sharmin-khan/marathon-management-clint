@@ -5,6 +5,10 @@ import { Helmet } from "react-helmet-async";
 import { FaEdit, FaTrash, FaRunning, FaMapMarkerAlt, FaCalendar } from "react-icons/fa";
 
 const MyMarathonList = () => {
+     useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const { user } = useContext(AuthContext);
   const [myMarathons, setMyMarathons] = useState([]);
   const [loading, setLoading] = useState(true);

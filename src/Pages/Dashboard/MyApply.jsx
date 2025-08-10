@@ -5,6 +5,11 @@ import Swal from "sweetalert2";
 import { FaSearch, FaEdit, FaTrash, FaClipboardList, FaCalendarAlt, FaPhone, FaInfoCircle, FaRunning } from "react-icons/fa";
 
 const MyApply = () => {
+  
+     useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []); 
+
   const { user } = useContext(AuthContext);
   const [applies, setApplies] = useState([]);
   const [filteredApplies, setFilteredApplies] = useState([]);

@@ -1,17 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router";
+import LoadingSpinner from "../../LoadingSpinner/LoadingSpinner";
 
 const MarathonCard = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const [marathons, setMarathons] = useState([]);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);
     fetch("https://marathon-management-server-seven.vercel.app/marathonCard")
       .then((res) => res.json())
-      .then((data) => setMarathons(data));
+      .then((data) => {
+        setMarathons(data);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
   }, []);
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center py-20">
+        <LoadingSpinner />
+      </div>
+    );
+  }
 
   return (
     <div className="py-10 bg-white dark:bg-gray-900 transition-colors duration-300">
@@ -19,7 +37,7 @@ const MarathonCard = () => {
         <title>Marathons | MarathonPro</title>
       </Helmet>
       <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mt-10 mb-6">
-        Marathon series 
+        Marathon series
       </h2>
       <p className="text-center max-w-2xl mx-auto text-gray-700 dark:text-gray-300 mb-10">
         Join exciting marathon series happening across the globe. Register now
@@ -41,7 +59,7 @@ const MarathonCard = () => {
             </figure>
 
             <div className="card-body">
-              <h2  className="card-title md:text-2xl text-blue-600 dark:text-blue-400">
+              <h2 className="card-title md:text-2xl text-blue-600 dark:text-blue-400">
                 {event.title}
               </h2>
               <p className="text-gray-600 dark:text-gray-300 text-md lg:text-lg font-semibold">

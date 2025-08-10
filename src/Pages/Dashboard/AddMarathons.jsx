@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
@@ -7,6 +7,10 @@ import "react-datepicker/dist/react-datepicker.css";
 import { FaPlus, FaMapMarkerAlt, FaRunning, FaCalendarAlt, FaImage, FaFileAlt } from "react-icons/fa";
 
 const AddMarathons = () => {
+     useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({

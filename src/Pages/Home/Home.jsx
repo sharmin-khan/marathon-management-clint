@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import img1 from "../../assets/image/img1.jpg";
 import img2 from "../../assets/image/img2.webp";
 import img3 from "../../assets/image/img3.avif";
@@ -14,6 +14,9 @@ import UpcomingMarathon from "../../Section/UpcomingMarathon";
 import Marathons from "../../Section/Marathons";
 
 const Home = () => {
+     useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   return (
     <div className="w-11/12 mx-auto pt-28">
        <Helmet>

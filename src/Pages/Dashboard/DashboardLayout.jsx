@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { NavLink, Outlet } from "react-router";
 
 const DashboardLayout = () => {
+     useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   return (
     <div className="min-h-screen flex flex-col bg-gray-50 dark:bg-gray-900 pt-20">
       <Helmet>

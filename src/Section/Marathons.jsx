@@ -1,19 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 const Marathons = () => {
   const [marathons, setMarathons] = useState([]);
+  const [loading, setLoading] = useState(true); 
   const navigate = useNavigate();
 
   useEffect(() => {
+    setLoading(true);  
     fetch("https://marathon-management-server-seven.vercel.app/marathon")
       .then((res) => res.json())
-      .then((data) => setMarathons(data));
+      .then((data) => {
+        setMarathons(data);
+        setLoading(false);  
+      })
+      .catch(() => setLoading(false)); 
   }, []);
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-64">
+        <LoadingSpinner/> 
+      </div>
+    );
+  }
+
   return (
-    <div className="py-10  bg-white dark:bg-gray-900 transition-colors duration-300">
-      <div >
+    <div className="py-10 bg-white dark:bg-gray-900 transition-colors duration-300">
+      <div>
         <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-600 mb-4">
           Marathon Series
         </h2>
@@ -22,41 +37,39 @@ const Marathons = () => {
           to test your endurance, meet passionate runners, and be a part of
           something unforgettable!
         </p>
-        <div className=" grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {marathons.map((event, idx) => (
-          <div
-            key={idx}
-            className="card group w-full bg-base-100 shadow-md dark:bg-gray-800 transition duration-300"
-          >
-            <figure className="overflow-hidden">
-              <img
-                src={event.image}
-                alt={event.title}
-                className="w-full h-48 sm:h-56 md:h-60 lg:h-72 xl:h-80 object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </figure>
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {marathons.map((event, idx) => (
+            <div
+              key={idx}
+              className="card group w-full bg-base-100 shadow-md dark:bg-gray-800 transition duration-300"
+            >
+              <figure className="overflow-hidden">
+                <img
+                  src={event.image}
+                  alt={event.title}
+                  className="w-full h-48 sm:h-56 md:h-60 lg:h-72 xl:h-80 object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </figure>
 
-            <div className="card-body">
-              <h2 className="card-title md:text-2xl text-blue-600 dark:text-blue-400">
-                {event.title}
-              </h2>
-              <p className="text-gray-600 dark:text-gray-300 text-md lg:text-lg font-semibold">
-                🌍 {event.location} <br />
-                {/* 🏃 Distance: {event.runningDistance} <br /> */}
-                🗓️ Registration: {event.registrationStart} –{" "}
-                {event.registrationEnd}
-              </p>
-              <div className="card-actions justify-end">
-                <button
-                  onClick={() => navigate(`/marathonDetails/${event._id}`)}
-                  className="btn btn-md bg-blue-600 hover:bg-yellow-400 dark:bg-blue-400 dark:hover:bg-yellow-400 text-white"
-                >
-                  See Details →
-                </button>
+              <div className="card-body">
+                <h2 className="card-title md:text-2xl text-blue-600 dark:text-blue-400">
+                  {event.title}
+                </h2>
+                <p className="text-gray-600 dark:text-gray-300 text-md lg:text-lg font-semibold">
+                  🌍 {event.location} <br />
+                  🗓️ Registration: {event.registrationStart} – {event.registrationEnd}
+                </p>
+                <div className="card-actions justify-end">
+                  <button
+                    onClick={() => navigate(`/marathonDetails/${event._id}`)}
+                    className="btn btn-md bg-blue-600 hover:bg-yellow-400 dark:bg-blue-400 dark:hover:bg-yellow-400 text-white"
+                  >
+                    See Details →
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
         </div>
       </div>
     </div>

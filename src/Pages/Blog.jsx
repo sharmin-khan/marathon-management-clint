@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaSearch, FaCalendar, FaUser, FaTag, FaArrowRight, FaEnvelope } from "react-icons/fa";
 import { MdTrendingUp, MdFitnessCenter, MdRestaurant, MdEmojiEvents } from "react-icons/md";
 
 const Blog = () => {
+       useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+  
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("all");
 

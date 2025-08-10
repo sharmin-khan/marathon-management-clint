@@ -1,7 +1,11 @@
+import { useEffect } from "react";
 import { FaRunning, FaUsers, FaTrophy, FaHeart, FaMapMarkerAlt, FaPhone, FaEnvelope } from "react-icons/fa";
 import { MdSportsScore, MdSecurity, MdAccessibility } from "react-icons/md";
 
 const About = () => {
+       useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
   const stats = [
     { number: "50+", label: "Marathons Organized", icon: FaRunning },
     { number: "10K+", label: "Happy Participants", icon: FaUsers },
