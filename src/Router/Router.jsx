@@ -5,6 +5,9 @@ import Register from "../Pages/Home/Register";
 import Login from "../Pages/Home/Login";
 import Blog from "../Pages/Blog";
 import About from "../Pages/About";
+import GlobalMarathons from "../Pages/MarathonInfo/GlobalMarathons";
+import RaceManagement from "../Pages/MarathonInfo/RaceManagement";
+import RunningLegacy from "../Pages/MarathonInfo/RunningLegacy";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import PrivateRoutes from "../Routes/PrivateRoutes";
 import MarathonDetails from "../Pages/MarathonDetails/MarathonDetails";
@@ -41,6 +44,18 @@ const router = createBrowserRouter([
       {
         path: "about",
         Component: About,
+      },
+      {
+        path: "global-marathons",
+        Component: GlobalMarathons,
+      },
+      {
+        path: "race-management",
+        Component: RaceManagement,
+      },
+      {
+        path: "running-legacy",
+        Component: RunningLegacy,
       },
       {
         path: "marathonCard",

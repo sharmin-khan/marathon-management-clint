@@ -87,7 +87,7 @@ const Navbar = () => {
             }`
           }
         >
-          Blog
+          Blogs
         </NavLink>
       </li>
       {user && (

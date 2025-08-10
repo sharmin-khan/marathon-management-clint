@@ -48,11 +48,11 @@ const MarathonCard = () => {
             something unforgettable!
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-2">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {marathons.map((event, idx) => (
             <div
               key={idx}
-              className="card group w-full sm:w-[22rem] lg:w-[20rem] xl:w-[28rem] bg-base-100 shadow-md dark:bg-gray-800 transition duration-300"
+              className="card group w-full bg-base-100 shadow-md dark:bg-gray-800 transition duration-300"
             >
               <figure className="overflow-hidden">
                 <img

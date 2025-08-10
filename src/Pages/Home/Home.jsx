@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import img1 from "../../assets/image/img1.jpg";
 import img2 from "../../assets/image/img2.webp";
 import img3 from "../../assets/image/img3.avif";
@@ -13,13 +13,12 @@ import { Helmet } from "react-helmet-async";
 import UpcomingMarathon from "../../Section/UpcomingMarathon";
 import Marathons from "../../Section/Marathons";
 
+import { Link } from "react-router";
+
 const Home = () => {
-     useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, []);
   return (
-    <div className="w-11/12 mx-auto pt-28">
-       <Helmet>
+    <div className="w-11/12 mx-auto mt-28">
+      <Helmet>
         <title>Home | MarathonPro</title>
       </Helmet>
       <Swiper
@@ -43,12 +42,12 @@ const Home = () => {
                 Join thousands of runners in prestigious marathon events worldwide. 
                 From city streets to scenic trails, find your perfect race.
               </p>
-              <button
-              
-                className="lg:mt-6 mt-2 rounded-md px-6 py-3 m-1 overflow-hidden relative group cursor-pointer  font-medium bg-blue-600  text-white hover:bg-blue-700 transition-all duration-300 shadow-lg"
+              <Link
+                to="/global-marathons"
+                className="lg:mt-6 mt-2 rounded-md px-6 py-3 m-1 overflow-hidden relative group cursor-pointer font-medium bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 shadow-lg"
               >
                  Learn More
-              </button>
+              </Link>
             </div>
           </div>
         </SwiperSlide>
@@ -67,12 +66,12 @@ const Home = () => {
                 Experience world-class race organization with professional timing, 
                 medical support, and comprehensive runner services.
               </p>
-              <button
-               
-                className="lg:mt-6 mt-2 rounded-md px-6 py-3 m-1 overflow-hidden relative group cursor-pointer  font-medium bg-blue-600  text-white hover:bg-blue-700 transition-all duration-300 shadow-lg"
+              <Link
+                to="/race-management"
+                className="lg:mt-6 mt-2 rounded-md px-6 py-3 m-1 overflow-hidden relative group cursor-pointer font-medium bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 shadow-lg"
               >
                 Learn More
-              </button>
+              </Link>
             </div>
           </div>
         </SwiperSlide>
@@ -91,11 +90,12 @@ const Home = () => {
                 Track your progress, achieve personal records, and join an elite 
                 community of dedicated runners and athletes.
               </p>
-              <button
-                className="lg:mt-6 mt-2 rounded-md px-6 py-3 m-1 overflow-hidden relative group cursor-pointer  font-medium bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 shadow-lg"
+              <Link
+                to="/running-legacy"
+                className="lg:mt-6 mt-2 rounded-md px-6 py-3 m-1 overflow-hidden relative group cursor-pointer font-medium bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 shadow-lg"
               >
                 Learn More
-              </button>
+              </Link>
             </div>
           </div>
         </SwiperSlide>
@@ -103,7 +103,7 @@ const Home = () => {
       <Marathons></Marathons>
       <UpcomingMarathon></UpcomingMarathon>
       <TopRunners></TopRunners>
-       <WhyJoinMarathon></WhyJoinMarathon>
+      <WhyJoinMarathon></WhyJoinMarathon>
     </div>
   );
 };

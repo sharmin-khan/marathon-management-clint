@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { FaSearch, FaCalendar, FaUser, FaTag, FaArrowRight, FaEnvelope } from "react-icons/fa";
 import { MdTrendingUp, MdFitnessCenter, MdRestaurant, MdEmojiEvents } from "react-icons/md";
 
@@ -99,6 +100,9 @@ const Blog = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 pt-20">
+       <Helmet>
+              <title>Blog | MarathonPro</title>
+            </Helmet>
       <div className="w-11/12 mx-auto py-8">
         {/* Hero Section */}
         <div className="text-center mb-12">
