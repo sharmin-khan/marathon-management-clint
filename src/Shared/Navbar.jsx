@@ -46,7 +46,7 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            `text-base lg:text-sm xl:text-lg font-bold px-3 py-1 rounded hover:bg-gray-200 ${
+            `text-base lg:text-sm xl:text-lg font-bold px-3 py-2 rounded hover:bg-gray-200 ${
              isActive
               ? "text-blue-600"
               : theme === "night"
@@ -62,7 +62,7 @@ const Navbar = () => {
         <NavLink
           to="/marathonCard"
           className={({ isActive }) =>
-            `text-base lg:text-sm xl:text-lg font-bold px-3 py-1 rounded  hover:bg-gray-200 ${
+            `text-base lg:text-sm xl:text-lg font-bold px-3 py-2 rounded  hover:bg-gray-200 ${
               isActive
               ? "text-blue-600"
               : theme === "night"
@@ -78,7 +78,7 @@ const Navbar = () => {
         <NavLink
           to="/blog"
           className={({ isActive }) =>
-            `text-base lg:text-sm xl:text-lg font-bold px-3 py-1 rounded  hover:bg-gray-200 ${
+            `text-base lg:text-sm xl:text-lg font-bold px-3 py-2 rounded  hover:bg-gray-200 ${
               isActive
               ? "text-blue-600"
               : theme === "night"
@@ -95,7 +95,7 @@ const Navbar = () => {
           <NavLink
             to="/dashboard"
             className={({ isActive }) =>
-              `text-base lg:text-sm xl:text-lg font-bold px-3 py-1 rounded  hover:bg-gray-200 ${
+              `text-base lg:text-sm xl:text-lg font-bold px-3 py-2 rounded  hover:bg-gray-200 ${
                isActive
               ? "text-blue-600"
               : theme === "night"
@@ -113,7 +113,7 @@ const Navbar = () => {
           <NavLink
             to="/about"
             className={({ isActive }) =>
-              `text-base lg:text-sm xl:text-lg font-bold px-3 py-1 rounded  hover:bg-gray-200 ${
+              `text-base lg:text-sm xl:text-lg font-bold px-3 py-2 rounded  hover:bg-gray-200 ${
                isActive
               ? "text-blue-600"
               : theme === "night"
@@ -133,7 +133,7 @@ const Navbar = () => {
     <div className="navbar bg-base-100 shadow-md dark:border-b-1 fixed top-0 left-0 w-full z-50 px-0 mx-0">
       <div className="w-11/12 mx-auto  flex justify-between items-center">
         {/* Left - Logo */}
-        <div className="navbar-start flex items-center">
+        <div className="navbar-start lg:w-1/4 flex items-center">
           <Link to="/" className="text-2xl font-bold flex items-center">
             {/* <img src={logo3} alt="Logo" className="w-14 h-14 rounded-md" /> */}
             <FaRunning size={28} className="text-blue-600" />
@@ -146,7 +146,7 @@ const Navbar = () => {
         </div>
 
         {/* Right */}
-        <div className="navbar-end flex items-center gap-4">
+        <div className="navbar-end lg:w-3/4 flex items-center gap-3">
         {/* Theme Toggle */}
         <label className="flex items-center cursor-pointer">
           <input
@@ -163,7 +163,7 @@ const Navbar = () => {
         </label>
 
         {/* Large menu */}
-        <ul className="menu menu-horizontal hidden lg:flex gap-4 pr-0 items-center">
+        <ul className="menu menu-horizontal hidden lg:flex gap-3 pr-0 items-center">
           {navLinks}
                      {/* Avatar */}
            {user?.photoURL ? (
