@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const UpcomingMarathon = () => {
   const upcoming = [
@@ -10,6 +10,8 @@ const UpcomingMarathon = () => {
       details:
         "Experience the vibrant streets of Tokyo with thousands of international runners.",
       badge: "Featured",
+      moreInfo:
+        "The Tokyo Marathon is one of the six World Marathon Majors and attracts elite runners from all over the world. The course takes you through iconic city landmarks and offers an unforgettable experience for participants.",
     },
     {
       title: "Paris Marathon",
@@ -20,6 +22,8 @@ const UpcomingMarathon = () => {
       details:
         "Run past iconic landmarks like the Eiffel Tower and Notre-Dame.",
       badge: "New",
+      moreInfo:
+        "Paris Marathon offers a scenic route along the Seine River and through historic neighborhoods. It's known for its festive atmosphere and wide participation from runners worldwide.",
     },
     {
       title: "Berlin Marathon",
@@ -29,6 +33,8 @@ const UpcomingMarathon = () => {
       details:
         "One of the fastest marathons in the world, perfect for setting a new record.",
       badge: "Hot",
+      moreInfo:
+        "The Berlin Marathon is famous for its flat course and world record performances. It attracts both professional and amateur runners aiming for personal bests.",
     },
     {
       title: "New York City Marathon",
@@ -38,6 +44,8 @@ const UpcomingMarathon = () => {
         "https://i.ibb.co/prWSPj00/sarah-sellers-01-gty-jef-180717-hp-Main-16x9-992.jpg",
       details: "Join over 50,000 runners through all five boroughs of NYC.",
       badge: "Popular",
+      moreInfo:
+        "NYC Marathon is the largest marathon in the world and runs through all five boroughs of New York City. It is a major event attracting runners and spectators globally.",
     },
     {
       title: "London Marathon",
@@ -48,6 +56,8 @@ const UpcomingMarathon = () => {
       details:
         "A scenic route along the River Thames with a festive atmosphere.",
       badge: "Featured",
+      moreInfo:
+        "London Marathon is renowned for its vibrant crowds and historic landmarks along the route. It’s part of the World Marathon Majors series.",
     },
     {
       title: "Boston Marathon",
@@ -58,8 +68,20 @@ const UpcomingMarathon = () => {
       details:
         "Historic and competitive, it’s the world’s oldest annual marathon.",
       badge: "Classic",
+      moreInfo:
+        "The Boston Marathon is the oldest annual marathon in the world and requires runners to qualify. It’s known for its challenging course and passionate community.",
     },
   ];
+
+  const [expandedIndex, setExpandedIndex] = useState(null);
+
+  const toggleExpand = (index) => {
+    if (expandedIndex === index) {
+      setExpandedIndex(null);
+    } else {
+      setExpandedIndex(index);
+    }
+  };
 
   return (
     <div className="py-10">
@@ -67,9 +89,8 @@ const UpcomingMarathon = () => {
         Upcoming Marathons
       </h2>
       <p className="text-center max-w-2xl mx-auto text-gray-700 dark:text-gray-300 mb-10">
-  Discover the latest marathon events happening near you. 
-  Register early to secure your spot and prepare for an unforgettable race experience.
-</p>
+        Discover the latest marathon events happening near you. Register early to secure your spot and prepare for an unforgettable race experience.
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {upcoming.map((event, idx) => (
           <div
@@ -82,7 +103,6 @@ const UpcomingMarathon = () => {
                 alt={event.title}
                 className="w-full h-40 object-cover rounded"
               />
-              {/* Badge */}
               <span className="absolute top-2 left-2 bg-blue-600 text-white text-xs font-semibold px-2 py-1 rounded">
                 {event.badge}
               </span>
@@ -99,18 +119,22 @@ const UpcomingMarathon = () => {
             <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
               {event.details}
             </p>
-            <button className="mt-2 text-blue-600 hover:underline font-semibold cursor-pointer">
-              Read More
+
+            {/* Expanded extra details */}
+            {expandedIndex === idx && (
+              <p className="text-sm text-gray-700 dark:text-gray-300 mt-2">
+                {event.moreInfo}
+              </p>
+            )}
+
+            <button
+              onClick={() => toggleExpand(idx)}
+              className="mt-2 text-blue-600 hover:underline font-semibold cursor-pointer"
+            >
+              {expandedIndex === idx ? "Show Less" : "Read More"}
             </button>
           </div>
         ))}
-      </div>
-      <div className="text-center mt-6">
-        <button
-                className="rounded-md px-6 py-3 m-1 overflow-hidden relative group cursor-pointer  font-medium bg-blue-600 text-white hover:bg-blue-700 transition-all duration-300 shadow-lg"
-              >
-               View All Events
-              </button>
       </div>
     </div>
   );

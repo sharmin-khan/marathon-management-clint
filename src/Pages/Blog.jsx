@@ -185,9 +185,9 @@ const Blog = () => {
                       <FaCalendar className="text-gray-400 ml-3" />
                       <span className="text-gray-700">{new Date(filteredPosts[0].date).toLocaleDateString()}</span>
                     </div>
-                    <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2">
+                    {/* <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 cursor-pointer">
                       Read More <FaArrowRight />
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </div>
@@ -224,9 +224,9 @@ const Blog = () => {
                       <FaUser />
                       <span>{post.author}</span>
                     </div>
-                    <button className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1">
+                    {/* <button className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 cursor-pointer">
                       Read More <FaArrowRight className="text-sm" />
-                    </button>
+                    </button> */}
                   </div>
                 </div>
               </article>
@@ -246,10 +246,10 @@ const Blog = () => {
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full pl-10 pr-4 py-3 text-gray-900 rounded-lg focus:ring-2 focus:ring-white focus:outline-none"
+                className="w-full pl-10 pr-4 py-3 text-gray-100 rounded-lg focus:ring-2 focus:ring-white focus:outline-none"
               />
             </div>
-            <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors">
+            <button className="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors cursor-pointer">
               Subscribe
             </button>
           </div>
