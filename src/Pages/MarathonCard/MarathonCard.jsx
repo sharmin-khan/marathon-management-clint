@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router";
 import { FaSearch } from "react-icons/fa";
+import { useFavorites } from "../../Context/FavoriteContext";
+import { MdFavoriteBorder } from "react-icons/md";
 
 const LoadingSpinner = () => (
   <div className="flex justify-center items-center py-20">
@@ -19,6 +21,7 @@ const MarathonCard = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredMarathons, setFilteredMarathons] = useState([]);
   const navigate = useNavigate();
+  const { favorites, toggleFavorite } = useFavorites();
 
   // Effect to fetch initial marathon data
   useEffect(() => {
@@ -150,14 +153,25 @@ const MarathonCard = () => {
                   </span>
                 </p>
 
-                <div className="flex justify-center mt-4">
+                <div className="flex justify-between items-center mt-4">
+                  {/* Favorite Button */}
+                  <button
+                    onClick={() => toggleFavorite(event)}
+                    className="text-2xl cursor-pointer"
+                  >
+                    <MdFavoriteBorder 
+                      className={
+                        favorites.find((f) => f._id === event._id)
+                          ? "text-red-500"
+                          : "text-blue-400"
+                      }
+                    />
+                  </button>
+
+                  {/* See Details button */}
                   <button
                     onClick={() => navigate(`/marathonDetails/${event._id}`)}
-                    className="w-full inline-flex justify-center items-center gap-2 px-4 py-2 
-                               bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 
-                               text-white text-base font-semibold rounded-lg shadow-md hover:shadow-lg 
-                               transform hover:-translate-y-0.5 transition-all duration-300 border-0 
-                               focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 cursor-pointer"
+                    className="btn btn-md bg-blue-600 hover:bg-yellow-400 dark:bg-blue-400 dark:hover:bg-yellow-400 text-white"
                   >
                     See Details →
                   </button>

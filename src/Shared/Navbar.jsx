@@ -5,10 +5,12 @@ import { FaHeart, FaUserCircle } from "react-icons/fa";
 import { MdDarkMode, MdLightMode } from "react-icons/md";
 import { FaRunning } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { useFavorites } from "../Context/FavoriteContext";
 
 const Navbar = () => {
   const { user, logoutUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { favorites } = useFavorites();
 
   // Theme state
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
@@ -138,7 +140,10 @@ const Navbar = () => {
             }`
           }
         >
-          <FaHeart className="text-red-500" />
+          <FaHeart className="text-blue-600" />
+          {favorites.length > 0 && (
+            <span className="text-sm font-semibold">{favorites.length}</span>
+          )}
         </NavLink>
       </li>
     </>
@@ -242,7 +247,7 @@ const Navbar = () => {
               </>
             )}
           </ul>
-          
+
           {/* 3. Mobile Dropdown */}
           <div className="dropdown dropdown-end lg:hidden">
             <label tabIndex={0} className="btn btn-ghost ">
