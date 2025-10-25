@@ -135,7 +135,7 @@ const Blog = () => {
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap transition-colors ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-full whitespace-nowrap transition-colors cursor-pointer ${
                     selectedCategory === category.id
                       ? "bg-blue-600 text-white"
                       : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-300"
@@ -185,9 +185,9 @@ const Blog = () => {
                       <FaCalendar className="text-gray-400 ml-3" />
                       <span className="text-gray-700">{new Date(filteredPosts[0].date).toLocaleDateString()}</span>
                     </div>
-                    {/* <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 cursor-pointer">
+                    <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center gap-2 cursor-pointer">
                       Read More <FaArrowRight />
-                    </button> */}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -224,9 +224,9 @@ const Blog = () => {
                       <FaUser />
                       <span>{post.author}</span>
                     </div>
-                    {/* <button className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 cursor-pointer">
+                    <button className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1 cursor-pointer">
                       Read More <FaArrowRight className="text-sm" />
-                    </button> */}
+                    </button>
                   </div>
                 </div>
               </article>
