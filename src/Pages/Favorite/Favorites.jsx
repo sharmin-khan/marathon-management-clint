@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
-import { FaHeart } from "react-icons/fa";
 import { useFavorites } from "../../Context/FavoriteContext";
 import { Helmet } from "react-helmet-async";
 
@@ -60,14 +59,14 @@ const Favorites = () => {
               <div className="flex justify-between items-center mt-4">
                 <button
                   onClick={() => toggleFavorite(event)}
-                  className="text-2xl"
+                  className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded cursor-pointer"
                 >
-                  <FaHeart className="text-red-500" />
+                    Remove
                 </button>
 
                 <button
                   onClick={() => navigate(`/marathonDetails/${event._id}`)}
-                  className="px-4 py-2 bg-blue-600 text-white rounded"
+                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded cursor-pointer"
                 >
                   See Details →
                 </button>
