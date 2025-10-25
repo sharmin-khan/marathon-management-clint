@@ -18,6 +18,7 @@ import MyApply from "../Pages/Dashboard/MyApply";
 import DashboardLayout from "../Pages/Dashboard/DashboardLayout";
 import MyMarathonList from "../Pages/Dashboard/MyMarathonList";
 import AddMarathons from "../Pages/Dashboard/AddMarathons";
+import Favorites from "../Pages/Favorite/Favorites";
 
 const router = createBrowserRouter([
   {
@@ -59,7 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: "marathonCard",
-        Component:MarathonCard,
+        Component: MarathonCard,
         // element: (
         //   <PrivateRoutes>
         //     <MarathonCard></MarathonCard>
@@ -83,25 +84,37 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/favorites",
+        element: <Favorites />,
+      },
+      {
         path: "/dashboard",
         Component: DashboardLayout,
         children: [
           {
-            path:'/dashboard/addMarathons',
-            element:<PrivateRoutes><AddMarathons></AddMarathons></PrivateRoutes>
+            path: "/dashboard/addMarathons",
+            element: (
+              <PrivateRoutes>
+                <AddMarathons></AddMarathons>
+              </PrivateRoutes>
+            ),
           },
           {
-            path:"/dashboard/myMarathonList",
-            element:<PrivateRoutes><MyMarathonList></MyMarathonList></PrivateRoutes>
+            path: "/dashboard/myMarathonList",
+            element: (
+              <PrivateRoutes>
+                <MyMarathonList></MyMarathonList>
+              </PrivateRoutes>
+            ),
           },
-               {
+          {
             path: "/dashboard/myApply",
             element: (
               <PrivateRoutes>
                 <MyApply></MyApply>
               </PrivateRoutes>
             ),
-          }
+          },
         ],
       },
     ],
