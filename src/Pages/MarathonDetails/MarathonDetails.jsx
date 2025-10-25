@@ -164,7 +164,12 @@ const MarathonDetails = () => {
             >
               ← Back to Home
             </button>
-
+               <button
+                    onClick={() => window.history.back()}
+                    className="px-6 py-2 rounded text-blue-600 font-semibold border border-blue-600 hover:bg-blue-50 transition cursor-pointer"
+                >
+                    ← Back to Previous Page
+                </button>
             <button
               onClick={handleRegister}
               disabled={!isRegistrationOpen}

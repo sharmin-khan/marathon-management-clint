@@ -157,7 +157,7 @@ const MarathonCard = () => {
                                bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 
                                text-white text-base font-semibold rounded-lg shadow-md hover:shadow-lg 
                                transform hover:-translate-y-0.5 transition-all duration-300 border-0 
-                               focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
+                               focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 cursor-pointer"
                   >
                     See Details →
                   </button>
