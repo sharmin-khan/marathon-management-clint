@@ -236,7 +236,7 @@ const Navbar = () => {
           >
             {navLinks}
 
-                         {user?.photoURL ? (
+              {user?.photoURL ? (
                <li className="flex justify-center">
                  <img
                    src={user.photoURL}

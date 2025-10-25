@@ -2,12 +2,23 @@ import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
-import { FaSearch, FaEdit, FaTrash, FaClipboardList, FaCalendarAlt, FaPhone, FaInfoCircle, FaRunning } from "react-icons/fa";
+import {
+  FaSearch,
+  FaEdit,
+  FaTrash,
+  FaClipboardList,
+  FaCalendarAlt,
+  FaPhone,
+  FaInfoCircle,
+  FaRunning,
+  FaEye,
+} from "react-icons/fa";
+import { useNavigate } from "react-router";
 
 const MyApply = () => {
-useEffect(() => {
+  useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-  }   , []);
+  }, []);
   const { user } = useContext(AuthContext);
   const [applies, setApplies] = useState([]);
   const [filteredApplies, setFilteredApplies] = useState([]);
@@ -15,6 +26,7 @@ useEffect(() => {
   const [selectedApply, setSelectedApply] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchTimeout, setSearchTimeout] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user?.email) {
@@ -24,17 +36,19 @@ useEffect(() => {
 
   const fetchData = async (search = "") => {
     try {
-      const url = search 
-        ? `https://marathon-management-server-seven.vercel.app/myApply?userEmail=${user.email}&search=${encodeURIComponent(search)}`
+      const url = search
+        ? `https://marathon-management-server-seven.vercel.app/myApply?userEmail=${
+            user.email
+          }&search=${encodeURIComponent(search)}`
         : `https://marathon-management-server-seven.vercel.app/myApply?userEmail=${user.email}`;
-      
+
       const response = await fetch(url);
       const data = await response.json();
       setApplies(data);
       setFilteredApplies(data);
       setLoading(false);
     } catch (error) {
-      console.error('Error fetching data:', error);
+      console.error("Error fetching data:", error);
       setLoading(false);
     }
   };
@@ -75,13 +89,20 @@ useEffect(() => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://marathon-management-server-seven.vercel.app/deleteApply/${id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://marathon-management-server-seven.vercel.app/deleteApply/${id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your application has been removed.", "success");
+              Swal.fire(
+                "Deleted!",
+                "Your application has been removed.",
+                "success"
+              );
               setApplies(applies.filter((a) => a._id !== id));
             }
           });
@@ -90,14 +111,17 @@ useEffect(() => {
   };
 
   const handleUpdate = () => {
-    fetch(`https://marathon-management-server-seven.vercel.app/updateApply/${selectedApply._id}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        contactNumber: selectedApply.contactNumber,
-        additionalInfo: selectedApply.additionalInfo,
-      }),
-    })
+    fetch(
+      `https://marathon-management-server-seven.vercel.app/updateApply/${selectedApply._id}`,
+      {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contactNumber: selectedApply.contactNumber,
+          additionalInfo: selectedApply.additionalInfo,
+        }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {
@@ -116,7 +140,9 @@ useEffect(() => {
       <div className="flex items-center justify-center py-20">
         <div className="text-center">
           <div className="loading loading-spinner loading-lg text-blue-600"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-400 text-lg">Loading your applications...</p>
+          <p className="mt-4 text-gray-600 dark:text-gray-400 text-lg">
+            Loading your applications...
+          </p>
         </div>
       </div>
     );
@@ -126,8 +152,12 @@ useEffect(() => {
     return (
       <div className="text-center py-20">
         <div className="text-6xl mb-4">📝</div>
-        <h3 className="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">No Applications Found</h3>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">You haven't applied to any marathons yet.</p>
+        <h3 className="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-2">
+          No Applications Found
+        </h3>
+        <p className="text-gray-600 dark:text-gray-400 mb-6">
+          You haven't applied to any marathons yet.
+        </p>
         <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
           Browse Marathons
         </button>
@@ -158,7 +188,11 @@ useEffect(() => {
           <div className="bg-white/20 rounded-lg px-4 py-2">
             <span className="text-sm text-blue-100">Active</span>
             <div className="text-2xl font-bold">
-              {applies.filter(a => new Date(a.marathonStartDate) > new Date()).length}
+              {
+                applies.filter(
+                  (a) => new Date(a.marathonStartDate) > new Date()
+                ).length
+              }
             </div>
           </div>
         </div>
@@ -184,7 +218,8 @@ useEffect(() => {
           </div>
           {searchTerm && (
             <p className="text-sm text-gray-500 dark:text-gray-400 mt-2">
-              Found {filteredApplies.length} result{filteredApplies.length !== 1 ? 's' : ''}
+              Found {filteredApplies.length} result
+              {filteredApplies.length !== 1 ? "s" : ""}
             </p>
           )}
         </div>
@@ -218,29 +253,34 @@ useEffect(() => {
             </thead>
             <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
               {filteredApplies.map((item, idx) => (
-                                 <tr key={item._id} className="hover:bg-blue-50 dark:hover:bg-blue-900/10 transition-all duration-300 group">
-                   <td className="px-6 py-4">
-                     <div className="flex items-center justify-center w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-                       <span className="text-sm font-semibold text-blue-700 dark:text-blue-300">{idx + 1}</span>
-                     </div>
-                   </td>
-                   <td className="px-6 py-4">
-                     <div className="flex items-center space-x-3">
-                       <div className="flex-shrink-0">
-                         <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
-                           <FaRunning className="text-white text-lg" />
-                         </div>
-                       </div>
-                       <div>
-                         <div className="text-base font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                           {item.marathonTitle}
-                           </div>
-                         <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                           Application ID: {item._id.slice(-8)}
-                         </div>
-                       </div>
-                     </div>
-                   </td>
+                <tr
+                  key={item._id}
+                  className="hover:bg-blue-50 dark:hover:bg-blue-900/10 transition-all duration-300 group"
+                >
+                  <td className="px-6 py-4">
+                    <div className="flex items-center justify-center w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+                      <span className="text-sm font-semibold text-blue-700 dark:text-blue-300">
+                        {idx + 1}
+                      </span>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4">
+                    <div className="flex items-center space-x-3">
+                      <div className="flex-shrink-0">
+                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
+                          <FaRunning className="text-white text-lg" />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-base font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
+                          {item.marathonTitle}
+                        </div>
+                        <div className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                          Application ID: {item._id.slice(-8)}
+                        </div>
+                      </div>
+                    </div>
+                  </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
                       <div className="w-8 h-8 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
@@ -257,7 +297,7 @@ useEffect(() => {
                         <FaPhone className="text-purple-600 dark:text-purple-400 text-sm" />
                       </div>
                       <span className="font-medium text-gray-700 dark:text-gray-300">
-                        {item.contactNumber || 'Not provided'}
+                        {item.contactNumber || "Not provided"}
                       </span>
                     </div>
                   </td>
@@ -267,12 +307,26 @@ useEffect(() => {
                         <FaInfoCircle className="text-amber-600 dark:text-amber-400 text-sm" />
                       </div>
                       <span className="text-sm text-gray-600 dark:text-gray-400 max-w-xs truncate">
-                        {item.additionalInfo || 'No additional info'}
+                        {item.additionalInfo || "No additional info"}
                       </span>
                     </div>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
+                      <button
+                        onClick={() =>
+                          navigate(`/marathonDetails/${item.marathonId}`)
+                        }
+                        className="inline-flex cursor-pointer items-center gap-2 px-3 py-2 
+               bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 
+               text-white text-sm font-medium rounded-lg shadow-md hover:shadow-lg 
+               transform hover:-translate-y-0.5 transition-all duration-200 
+               border-0 focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
+                        title="View Marathon Details"
+                      >
+                        <FaEye className="text-sm" />
+                        Details
+                      </button>
                       {/* Update Button */}
                       <button
                         className="inline-flex cursor-pointer items-center gap-2 px-3 py-2 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-sm font-medium rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 border-0 focus:ring-2 focus:ring-amber-300 focus:ring-offset-2"
@@ -281,7 +335,7 @@ useEffect(() => {
                         <FaEdit className="text-sm" />
                         Update
                       </button>
-                      
+
                       {/* Delete Button */}
                       <button
                         onClick={() => handleDelete(item._id)}
@@ -303,20 +357,36 @@ useEffect(() => {
       <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="text-center">
-            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{applies.length}</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Total Applications</div>
+            <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
+              {applies.length}
+            </div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">
+              Total Applications
+            </div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-              {applies.filter(a => new Date(a.marathonStartDate) > new Date()).length}
+              {
+                applies.filter(
+                  (a) => new Date(a.marathonStartDate) > new Date()
+                ).length
+              }
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Upcoming Marathons</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">
+              Upcoming Marathons
+            </div>
           </div>
           <div className="text-center">
             <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-              {applies.filter(a => new Date(a.marathonStartDate) <= new Date()).length}
+              {
+                applies.filter(
+                  (a) => new Date(a.marathonStartDate) <= new Date()
+                ).length
+              }
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Completed Marathons</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">
+              Completed Marathons
+            </div>
           </div>
         </div>
       </div>
@@ -329,9 +399,11 @@ useEffect(() => {
               <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
                 <FaEdit className="text-blue-600 dark:text-blue-400" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Update Application</h3>
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                Update Application
+              </h3>
             </div>
-            
+
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -344,7 +416,7 @@ useEffect(() => {
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed"
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Start Date
@@ -356,7 +428,7 @@ useEffect(() => {
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed"
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Contact Number
@@ -365,13 +437,16 @@ useEffect(() => {
                   type="text"
                   value={selectedApply.contactNumber}
                   onChange={(e) =>
-                    setSelectedApply({ ...selectedApply, contactNumber: e.target.value })
+                    setSelectedApply({
+                      ...selectedApply,
+                      contactNumber: e.target.value,
+                    })
                   }
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
                   placeholder="Enter contact number"
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                   Additional Information
@@ -379,23 +454,26 @@ useEffect(() => {
                 <textarea
                   value={selectedApply.additionalInfo}
                   onChange={(e) =>
-                    setSelectedApply({ ...selectedApply, additionalInfo: e.target.value })
+                    setSelectedApply({
+                      ...selectedApply,
+                      additionalInfo: e.target.value,
+                    })
                   }
                   rows="3"
                   className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
                   placeholder="Enter additional information"
                 />
               </div>
-              
+
               <div className="flex justify-end gap-3 pt-4">
                 <button
-                  className="px-4 py-2 bg-gray-400 hover:bg-gray-500 text-white font-medium rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+                  className="px-4 py-2 bg-gray-400 hover:bg-gray-500 text-white font-medium rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
                   onClick={() => setSelectedApply(null)}
                 >
                   Cancel
                 </button>
                 <button
-                  className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200"
+                  className="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
                   onClick={handleUpdate}
                 >
                   Save Changes
