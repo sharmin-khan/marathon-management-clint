@@ -4,13 +4,15 @@ import Navbar from '../Shared/Navbar';
 import Footer from '../Shared/Footer';
 
 const MainLayout = () => {
-    return (
-        <div>
-            <Navbar></Navbar>
-            <Outlet></Outlet>
-            <Footer></Footer>
-        </div>
-    );
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="flex-1">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
 };
 
 export default MainLayout;
